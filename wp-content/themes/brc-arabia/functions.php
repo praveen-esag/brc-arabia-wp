@@ -1,4 +1,5 @@
 <?php
+
 /**
  * brc-arabia functions and definitions
  *
@@ -7,9 +8,9 @@
  * @package brc-arabia
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
+if (! defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define('_S_VERSION', '1.0.0');
 }
 
 /**
@@ -19,17 +20,18 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function brc_arabia_setup() {
+function brc_arabia_setup()
+{
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on brc-arabia, use a find and replace
 		* to change 'brc-arabia' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'brc-arabia', get_template_directory() . '/languages' );
+	load_theme_textdomain('brc-arabia', get_template_directory() . '/languages');
 
 	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+	add_theme_support('automatic-feed-links');
 
 	/*
 		* Let WordPress manage the document title.
@@ -37,19 +39,19 @@ function brc_arabia_setup() {
 		* hard-coded <title> tag in the document head, and expect WordPress to
 		* provide it for us.
 		*/
-	add_theme_support( 'title-tag' );
+	add_theme_support('title-tag');
 
 	/*
 		* Enable support for Post Thumbnails on posts and pages.
 		*
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support('post-thumbnails');
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'brc-arabia' ),
+			'menu-1' => esc_html__('Primary', 'brc-arabia'),
 		)
 	);
 
@@ -83,7 +85,7 @@ function brc_arabia_setup() {
 	);
 
 	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
+	add_theme_support('customize-selective-refresh-widgets');
 
 	/**
 	 * Add support for core custom logo.
@@ -100,7 +102,7 @@ function brc_arabia_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'brc_arabia_setup' );
+add_action('after_setup_theme', 'brc_arabia_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -109,22 +111,24 @@ add_action( 'after_setup_theme', 'brc_arabia_setup' );
  *
  * @global int $content_width
  */
-function brc_arabia_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'brc_arabia_content_width', 640 );
+function brc_arabia_content_width()
+{
+	$GLOBALS['content_width'] = apply_filters('brc_arabia_content_width', 640);
 }
-add_action( 'after_setup_theme', 'brc_arabia_content_width', 0 );
+add_action('after_setup_theme', 'brc_arabia_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function brc_arabia_widgets_init() {
+function brc_arabia_widgets_init()
+{
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'brc-arabia' ),
+			'name'          => esc_html__('Sidebar', 'brc-arabia'),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'brc-arabia' ),
+			'description'   => esc_html__('Add widgets here.', 'brc-arabia'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -132,22 +136,37 @@ function brc_arabia_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'brc_arabia_widgets_init' );
+add_action('widgets_init', 'brc_arabia_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
-function brc_arabia_scripts() {
-	wp_enqueue_style( 'brc-arabia-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'brc-arabia-style', 'rtl', 'replace' );
+function brc_arabia_scripts()
+{
+	wp_enqueue_style('brc-arabia-style', get_stylesheet_uri(), array(), _S_VERSION);
+	wp_style_add_data('brc-arabia-style', 'rtl', 'replace');
 
-	wp_enqueue_script( 'brc-arabia-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script('brc-arabia-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	if (is_singular() && comments_open() && get_option('thread_comments')) {
+		wp_enqueue_script('comment-reply');
 	}
+
+	wp_enqueue_style('custom', get_template_directory_uri() . '/assets/css/custom.css', [], '1.0');
+	wp_enqueue_style('aos', get_template_directory_uri() . '/assets/css/aos.css', array(), '1.0');
+	wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '1.0', 'all');
+	wp_enqueue_style('swiper', get_template_directory_uri() . '/assets/vendor/swiper/swiper.min.css', array(), '1.0', 'all');
+	wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/brs4cod.css', array(), null);
+
+	// jQuery
+	wp_enqueue_script('jquery');
+
+	wp_enqueue_script('aos', get_template_directory_uri() . '/assets/js/aos.js', [], '1.0', true);
+	wp_enqueue_script('bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', [], '1.0', true);
+	wp_enqueue_script('swiper', get_template_directory_uri() . '/assets/vendor/swiper/swiper-bundle.min.js', [], '1.0', true);
+	wp_enqueue_script('custom', get_template_directory_uri() . '/assets/js/custom.js', [], '1.0', true);
 }
-add_action( 'wp_enqueue_scripts', 'brc_arabia_scripts' );
+add_action('wp_enqueue_scripts', 'brc_arabia_scripts');
 
 /**
  * Implement the Custom Header feature.
@@ -172,7 +191,36 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
+if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Validation to remove Special charecters from the text field
+ */
+add_filter('wpcf7_validate_text', 'brc_arabia_custom_text_validation_filter', 20, 2);
+add_filter('wpcf7_validate_text*', 'brc_arabia_custom_text_validation_filter', 20, 2);
+
+function brc_arabia_custom_text_validation_filter($result, $tag)
+{
+	$excluded_field_name = 'company';
+	$excluded_field_name1 = 'message';
+	$name = $tag->name;
+	$value = isset($_POST[$name]) ? trim(wp_unslash(strtr((string) $_POST[$name], "\n", " "))) : '';
+	if ('text' == $tag->basetype && $name !== $excluded_field_name && $name !== $excluded_field_name1) {
+		if (!empty($value) || $tag->is_required()) {
+			if (!preg_match('/^[a-z,A-Z ]+$/i', $value)) {
+				$result->invalidate($tag, "This is a required field.");
+			}
+		}
+	}
+	return $result;
+}
+
+/**
+ * Disable autocompleted for contact form
+ */
+add_filter('wpcf7_form_autocomplete', function ($autocomplete) {
+	$autocomplete = 'off';
+	return $autocomplete;
+}, 10, 1);
