@@ -164,6 +164,8 @@ function brc_arabia_scripts()
 	wp_enqueue_script('aos', get_template_directory_uri() . '/assets/js/aos.js', [], '1.0', true);
 	wp_enqueue_script('bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', [], '1.0', true);
 	wp_enqueue_script('swiper', get_template_directory_uri() . '/assets/vendor/swiper/swiper-bundle.min.js', [], '1.0', true);
+	wp_enqueue_script('gsap', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', [], null, true);
+	wp_enqueue_script('ScrollTrigger', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', [], null, true);
 	wp_enqueue_script('custom', get_template_directory_uri() . '/assets/js/custom.js', [], '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'brc_arabia_scripts');

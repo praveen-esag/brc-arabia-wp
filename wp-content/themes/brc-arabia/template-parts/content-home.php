@@ -84,9 +84,12 @@ get_header(); ?>
                 </div>
                 <div class="qualInfo">
                     <div class="qualItem">
-                        <h4 class="subTitle position-relative">Vertical reinforcment</h4>
+                        <h4 class="subTitle position-relative">Vertical <br/>reinforcment</h4>
                         <div class="qualDesc">
                             <p>Advanced facilities handle complex BBS accurately. Full material traceability ensures consistent performance.</p>
+                        </div>
+                        <div class="imgArea qualItemImg">
+                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/vertical_reinforcement.png" alt="">
                         </div>
                     </div>
                     <div class="qualItem">
@@ -94,11 +97,17 @@ get_header(); ?>
                         <div class="qualDesc">
                             <p>Our modern machinery delivers angular precision. Strict quality control eliminates manual bending risks.</p>
                         </div>
+                        <!-- <div class="imgArea qualItemImg">
+                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/vertical_reinforcement.png" alt="">
+                        </div> -->
                     </div>
                     <div class="qualItem">
                         <h4 class="subTitle position-relative">Structural Wall Reinforcement</h4>
                         <div class="qualDesc">
                             <p>Our modern machinery guarantees exact grid alignment for consistent structural performance.</p>
+                        </div>
+                        <div class="imgArea qualItemImg">
+                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/structural_wall_reinforcement.png" alt="">
                         </div>
                     </div>
                     <div class="qualItem">
@@ -106,6 +115,14 @@ get_header(); ?>
                         <div class="qualDesc">
                             <p>Strict quality control ensures uniform grids for consistent performance.</p>
                         </div>
+                        <div class="imgArea qualItemImg">
+                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/horizontal_slab_reinforcement.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="qualDemoNote">
+                    <div class="noteBox">
+                        <p class="text-white mb-0">NOTE: Hover on names to interact</p>
                     </div>
                 </div>
             </div>
@@ -153,5 +170,200 @@ get_header(); ?>
 </section>
 
 <!-- Stats section end -->
+
+<!-- Products section start -->
+
+<section class="prodsSec">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="secHead flexHead">
+                <h2 class="mainTitle text-black mb-0">Products & solutions</h2>
+                <div class="flexNavItem ctaBtn">
+                    <a href="#" class="text-black">view all BRC products</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="prodsList">
+                <div class="prodItem">
+                    <div class="prodImg">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/cut_bent_steel_rebar.png" alt="">
+                    </div>
+                    <div class="prodInfo">
+                        <p>Cut & bent steel rebar</p>
+                    </div>
+                </div>
+                <div class="prodItem">
+                    <div class="prodImg">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/welded_wire_mesh.png" alt="">
+                    </div>
+                    <div class="prodInfo">
+                        <p>Welded wire mesh</p>
+                    </div>
+                </div>
+                <div class="prodItem">
+                    <div class="prodImg">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/cold_drawn_rolled_steel.png" alt="">
+                    </div>
+                    <div class="prodInfo">
+                        <p>Cold drawn/rolled steel</p>
+                    </div>
+                </div>
+                <div class="prodItem">
+                    <div class="prodImg">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/engineering_services.png" alt="">
+                    </div>
+                    <div class="prodInfo">
+                        <p>Engineering services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products section end -->
+
+<!-- Projects section start -->
+
+<section class="projSec">
+    <div class="container-fluid">
+        <div class="projGrid">
+            <div class="projHead projGridItem">
+                <div class="titleArea">
+                    <h3 class="mainTitle">Landmark projects across the region</h3>
+                </div>
+                <div class="ctaBtn">
+                    <a href="#" class="">view all brc projects</a>
+                </div>
+            </div>
+            <div class="projItem projGridItem">
+                <div class="projImg">
+                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/dubai_metro.png" alt="">
+                </div>
+                <div class="projInfo">
+                    <p class="text-white">Dubai metro</p>
+                </div>
+            </div>
+            <div class="projItem projGridItem">
+                <div class="projImg">
+                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/etihad_rail.png" alt="">
+                </div>
+                <div class="projInfo">
+                    <p class="text-white">etihad rail</p>
+                </div>
+            </div>
+            <div class="projItem projGridItem">
+                <div class="projImg">
+                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/yas_marina_formula.png" alt="">
+                </div>
+                <div class="projInfo">
+                    <p class="text-white">yas marina formula 1</p>
+                </div>
+            </div>
+            <div class="projItem projGridItem">
+                <div class="projImg">
+                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/dubai_maktoum_airport.png" alt="">
+                </div>
+                <div class="projInfo">
+                    <p class="text-white">Dubai Maktoum airport</p>
+                </div>
+            </div>
+            <div class="projItem projGridItem">
+                <div class="projImg">
+                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/ruwais_refinery_expansion_project.png" alt="">
+                </div>
+                <div class="projInfo">
+                    <p class="text-white">Ruwais Refinery Expansion Project</p>
+                </div>
+            </div>
+            <div class="projItem projGridItem">
+                <div class="projImg">
+                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/saadiyat_beach_villas.png" alt="">
+                </div>
+                <div class="projInfo">
+                    <p class="text-white">Saadiyat Beach Villas, Abu Dhabi</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects section end -->
+
+<!-- News section start -->
+
+<section class="newsSec">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="secHead flexHead">
+                <h2 class="mainTitle text-black mb-0">News & insights</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-12">
+                <div class="newsItem">
+                    <div class="newsImg">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/news_card_1.png" alt="">
+                    </div>
+                    <div class="newsInfo">
+                        <div class="titleArea">
+                            <h4>Tortor pellentesque nec in vitae convallis nibh</h4>
+                        </div>
+                        <div class="desc">
+                            <p>Aliquet cursus quam eget cras sed nibh enim. Consectetur pulvinar morbi pharetra senectus ac sed neque orci augue. Orci ut tellus id netus. A quam cras enim vulputate...</p>
+                        </div>
+                        <div class="readMore">
+                            <a href="#">Read</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="newsItem">
+                    <div class="newsImg">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/news_card_2.png" alt="">
+                    </div>
+                    <div class="newsInfo">
+                        <div class="titleArea">
+                            <h4>Tortor pellentesque nec in vitae convallis nibh</h4>
+                        </div>
+                        <div class="desc">
+                            <p>Aliquet cursus quam eget cras sed nibh enim. Consectetur pulvinar morbi pharetra senectus ac sed neque orci augue. Orci ut tellus id netus. A quam cras enim vulputate...</p>
+                        </div>
+                        <div class="readMore">
+                            <a href="#">Read</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="newsItem">
+                    <div class="newsImg">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/news_card_3.png" alt="">
+                    </div>
+                    <div class="newsInfo">
+                        <div class="titleArea">
+                            <h4>Tortor pellentesque nec in vitae convallis nibh</h4>
+                        </div>
+                        <div class="desc">
+                            <p>Aliquet cursus quam eget cras sed nibh enim. Consectetur pulvinar morbi pharetra senectus ac sed neque orci augue. Orci ut tellus id netus. A quam cras enim vulputate...</p>
+                        </div>
+                        <div class="readMore">
+                            <a href="#">Read</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end viewAllNews">
+            <div class="flexNavItem ctaBtn maxCont">
+                <a href="#" class="color-theme">view all news</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- News section end -->
 
 <?php get_footer(); ?>

@@ -28,7 +28,12 @@
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'brc-arabia'); ?></a>
 
 		<!-- Header Start -->
-		<header id="headerMain" class="mainHeader absoluteHeader">
+		<?php if (is_front_page()) {
+			$headercls = "absoluteHeader";
+		} else {
+			$headercls = '';
+		} ?>
+		<header id="headerMain" class="mainHeader <?php echo $headercls; ?>">
 			<div class="container-fluid">
 				<div class="headerInner">
 					<div class="navWrap navLeft">
@@ -39,7 +44,12 @@
 						</nav>
 					</div>
 					<div class="logo_area logo">
-						<?php the_custom_logo(); ?>
+						<?php //the_custom_logo(); ?>
+						<?php if(is_front_page()) { ?>
+						<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo.svg" alt="BRC Logo">
+						<?php } else { ?>
+							<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo">
+						<?PHP } ?>
 					</div>
 					<div class="navWrap navRight">
 						<nav id="site-navigation" class="main-navigation mainNav">
