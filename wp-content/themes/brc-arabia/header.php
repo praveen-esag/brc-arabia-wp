@@ -44,12 +44,17 @@
 						</nav>
 					</div>
 					<div class="logo_area logo">
-						<?php //the_custom_logo(); ?>
-						<?php if(is_front_page()) { ?>
-						<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo.svg" alt="BRC Logo">
-						<?php } else { ?>
-							<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo">
-						<?PHP } ?>
+						<a href="<?php echo home_url(); ?>">
+							<?php //the_custom_logo(); 
+							?>
+							<?php if (is_front_page()) { ?>
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo.svg" alt="BRC Logo">
+							<?php } elseif (is_page_template('template-parts/content-contact.php')) { ?>
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_white.svg" alt="BRC Logo">
+							<?PHP } else { ?>
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo">
+							<?PHP } ?>
+						</a>
 					</div>
 					<div class="navWrap navRight">
 						<nav id="site-navigation" class="main-navigation mainNav">

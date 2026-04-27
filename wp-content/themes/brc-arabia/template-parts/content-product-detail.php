@@ -103,6 +103,61 @@ get_header(); ?>
                     </div>
                     <div class="prodTechDet">
                         <div class="techTable">
+                            <?php if (have_rows('tables')): ?>
+  <?php while (have_rows('tables')): the_row(); ?>
+
+    <?php if (get_row_layout() === 'table_block'): ?>
+
+      <div class="custom-table">
+
+        <?php if (get_sub_field('table_title')): ?>
+          <h3><?php the_sub_field('table_title'); ?></h3>
+        <?php endif; ?>
+
+        <table>
+
+          <!-- HEADER -->
+          <?php if (have_rows('table_header')): ?>
+            <thead>
+              <?php while (have_rows('table_header')): the_row(); ?>
+                <tr>
+                  <?php if (have_rows('header_row')): ?>
+                    <?php while (have_rows('header_row')): the_row(); ?>
+                      <th 
+                        colspan="<?php echo get_sub_field('colspan') ?: 1; ?>"
+                        rowspan="<?php echo get_sub_field('rowspan') ?: 1; ?>">
+                        <?php the_sub_field('cell_text'); ?>
+                      </th>
+                    <?php endwhile; ?>
+                  <?php endif; ?>
+                </tr>
+              <?php endwhile; ?>
+            </thead>
+          <?php endif; ?>
+
+          <!-- BODY -->
+          <?php if (have_rows('table_body')): ?>
+            <tbody>
+              <?php while (have_rows('table_body')): the_row(); ?>
+                <tr>
+                  <?php if (have_rows('body_row')): ?>
+                    <?php while (have_rows('body_row')): the_row(); ?>
+                      <td><?php the_sub_field('cell_value'); ?></td>
+                    <?php endwhile; ?>
+                  <?php endif; ?>
+                </tr>
+              <?php endwhile; ?>
+            </tbody>
+          <?php endif; ?>
+
+        </table>
+
+      </div>
+
+    <?php endif; ?>
+
+  <?php endwhile; ?>
+<?php endif; ?>
                             <table width="" height="">
                                 <tbody>
                                     <tr>

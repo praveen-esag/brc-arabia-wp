@@ -85,7 +85,8 @@ input:focus-visible {
     background: #0C56B7;
 }
 
-.bg_theme_grey {
+.bg_theme_grey,
+.single-product {
     background: #EBEFF3;
 }
 
@@ -172,13 +173,18 @@ img {
     width: max-content !important;
 }
 
+.linkInherit {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Common styles end */
 
 /* Header styles start */
 
 .mainHeader {
     /* padding: 3px 0px; */
-    padding-top: 33px;
+    /* padding-top: 33px; */
     bottom: 0px;
     left: 0;
     right: 0;
@@ -196,15 +202,16 @@ img {
     background-color: transparent;
 }
 
-.mainHeader:not(.absoluteHeader) {
+.mainHeader:not(.absoluteHeader) .headerInner {
     border-bottom: 1px solid #000;
-    padding-bottom: 26px;
+    padding-bottom: 27px;
 }
 
 .mainHeader .headerInner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 33px;
 }
 
 /* #headerMain {
@@ -560,7 +567,9 @@ img {
 .statsSec .secHead .desc p,
 .indusItem .indusTitle,
 .visCont .desc p,
-.misCont .desc p {
+.misCont .desc p,
+.engProdCont .desc p,
+.qhseMainCont .desc p {
     font-size: 24px;
     font-weight: 400;
     line-height: 32px;
@@ -618,7 +627,8 @@ img {
 
 .prodInfo p,
 .projInfo p,
-.solutionInfo .titleArea h4 {
+.solutionInfo .titleArea h4,
+.projMainInfo .desc h4 {
     color: #000;
     font-size: 24px;
     font-weight: 700;
@@ -844,7 +854,8 @@ img {
 }
 
 .newsInfo .desc p,
-.adrsBox .desc p {
+.adrsBox .desc p,
+.qhseItem .desc p {
     font-size: 20px;
     font-weight: 400;
     line-height: 30px;
@@ -992,7 +1003,8 @@ img {
 
 .storycontArea .desc p,
 .projMainInfo .desc p,
-.projDetCont .desc p {
+.projDetCont .desc p,
+.engMainInfo .desc p {
     font-size: 24px;
     font-weight: 400;
     line-height: 35px;
@@ -1283,7 +1295,8 @@ img {
 /* Product detail page styles start */
 
 .page-template-content-product-detail,
-.page-template-content-projects {
+.page-template-content-projects,
+.page-template-content-engineering {
     background: #EBEFF3;
 }
 
@@ -1322,7 +1335,12 @@ img {
     text-decoration: none;
 }
 
-.prodBanImg::before {
+.breadcrumbItem.current a {
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.gradOverlayImg::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1342,7 +1360,7 @@ img {
 }
 
 .prodBanInfo .titleArea .xlTitle {
-    max-width: 60%;
+    max-width: 40%;
     /* font-size: 80px;
     font-weight: 700;
     line-height: 106%;
@@ -1351,6 +1369,11 @@ img {
 
 .productMain {
     position: relative;
+}
+
+.productMain .desc p {
+    line-height: 1.4;
+    letter-spacing: normal;
 }
 
 .productMainWrap {
@@ -1377,7 +1400,8 @@ img {
 .productMain .desc p,
 .productMain .desc ul li,
 .certifContSec .desc p,
-.solItem {
+.solItem,
+.projMainInfo .desc li {
     font-size: 24px;
     line-height: 135%;
     margin-bottom: 0px;
@@ -1398,7 +1422,8 @@ img {
 
 .descWithCta .desc ul li {
     padding-right: 0px;
-    flex: 1 0 33%;
+    /* flex: 1 0 33%; */
+    flex: 0 0 auto;
     position: relative;
     display: flex;
     align-items: center;
@@ -1407,7 +1432,9 @@ img {
 
 .descWithCta .desc ul li::before,
 .genPurp ul li::before,
-.solItem::before {
+.plainCont ul li::before,
+.solItem::before,
+.projMainInfo .desc li:before {
     content: '';
     width: 5px;
     height: 5px;
@@ -1437,6 +1464,24 @@ img {
     padding-top: 110px;
 }
 
+.availMesh {
+    display: flex;
+    justify-content: space-between;
+}
+
+.availContCol.flex-1 {
+    /* max-width: 40%; */
+    width: 42%;
+    flex: 0 0 auto;
+}
+
+.availTableCol {
+    /* max-width: 50%; */
+    width: 50%;
+    padding-top: 44px;
+    flex: 0 0 auto;
+}
+
 .techTable table {
     margin-bottom: 0px;
 }
@@ -1455,6 +1500,24 @@ img {
     text-align: center;
 }
 
+.availTableCol .techTable tr td,
+.availTableCol .techTable tr th {
+    text-align: left;
+    border-right: 0px;
+    border-left: 0px;
+    font-size: 20px;
+}
+
+.availTableCol .techTable tr th {
+    font-size: 22px;
+    padding-right: 20px;
+}
+
+.availTableCol .techTable tr td:first-child,
+.availTableCol .techTable tr th:first-child {
+    width: 30%;
+}
+
 .techTable tr td:first-child,
 .techTable tr th:first-child {
     border-left: 0px;
@@ -1465,18 +1528,29 @@ img {
     border-right: 0px;
 }
 
-.availMesh .desc,
+.table_note p {
+    font-size: 20px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.availMesh .availContCol:not(.flex-1) .desc,
 .genPurp .desc {
     max-width: 70%;
 }
 
 .availMesh .dualImgArea,
-.certRow {
+.certRow,
+.dualColInfoSec {
     padding-top: 140px;
 }
 
 .availMesh .ctaBtn {
     padding-top: 45px;
+}
+
+.availMesh .availContCol.flex-1 .ctaBtn {
+    padding-top: 75px;
 }
 
 .genPurp {
@@ -1492,6 +1566,14 @@ img {
     /* padding-bottom: 30px; */
 }
 
+.genPurp h2,
+.genPurp h3 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.96px;
+}
+
 .genPurp ul li {
     position: relative;
     display: flex;
@@ -1501,6 +1583,7 @@ img {
 
 .faqSec {
     padding-top: 120px;
+    border-top: 1px solid #000;
 }
 
 .faqData {
@@ -1509,6 +1592,11 @@ img {
 
 .faqData .secHead {
     max-width: 25%;
+}
+
+.faqList,
+.dualcontImg {
+    max-width: 58%;
 }
 
 .faqItem:not(:last-child) {
@@ -1533,6 +1621,10 @@ img {
 
 .faqDesc:not(.show) {
     display: none;
+}
+
+.dualColInfoSec .dualcolCont {
+    padding-right: 3%;
 }
 
 .relProjSec {
@@ -1565,7 +1657,7 @@ img {
 
 .relProjSec .projSwiperNav {
     position: absolute;
-    top: 50px;
+    top: 20px;
     right: 12%;
     display: flex;
     align-items: center;
@@ -1583,54 +1675,83 @@ img {
     position: relative;
 }
 
-.contFormArea .form-group {
+.formCol .form-group {
     padding-top: 35px;
 }
 
-.contFormArea .form-group input,
-.contFormArea .form-group textarea,
-.contFormArea .form-group textarea::placeholder,
-.contFormArea .form-group input::placeholder {
+.formCol .form-group input,
+.formCol .form-group textarea,
+.formCol .form-group textarea::placeholder,
+.formCol .form-group select,
+.formCol .form-group input::placeholder {
     color: #000;
     font-size: 14px;
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: 1.4px;
     text-transform: uppercase;
-
+    background: transparent;
 }
 
-.contFormArea .form-group input,
-.contFormArea .form-group textarea {
+.formCol.formWhite .form-group input,
+.formCol.formWhite .form-group textarea,
+.formCol.formWhite .form-group textarea::placeholder,
+.formCol.formWhite .form-group input::placeholder {
+    color: white;
+}
+
+.formCol.formWhite .form-group select {
+    color: white;
+    background-color: transparent;
+}
+
+.formCol .form-group select:focus,
+.formCol .form-group textarea:focus {
+    outline: none;
+}
+
+.formCol.formWhite .form-group select option {
+    color: #000;
+}
+
+.formCol .form-group input,
+.formCol .form-group textarea,
+.formCol .form-group select {
     border: none;
     border-bottom: 1px solid #000;
     width: 100%;
     border-radius: 0px;
 }
 
-.contFormArea .form-group p {
+.formCol.formWhite .form-group input,
+.formCol.formWhite .form-group textarea,
+.formCol.formWhite .form-group select {
+    border-bottom: 1px solid white;
+}
+
+.formCol .form-group p {
     margin-bottom: 0px;
 }
 
-.contFormArea .form-group textarea {
+.formCol .form-group textarea {
     height: 60px;
 }
 
-.contFormArea .form-group .wpcf7-not-valid-tip {
+.formCol .form-group .wpcf7-not-valid-tip {
     position: absolute;
     right: 0;
     top: 6px;
     font-size: 12px;
 }
 
-.contFormArea .form-submit {
+.formCol .form-submit {
     position: relative;
     padding-top: 30px;
     display: flex;
     justify-content: flex-end;
 }
 
-.contFormArea .form-submit input {
+.formCol .form-submit input {
     width: max-content;
     border: 2px solid;
     border-radius: 0px 11px;
@@ -1640,22 +1761,29 @@ img {
     background-color: transparent;
     line-height: 1.4;
     padding: 0px 5px 6px 12px;
-    /* float: right; */
 }
 
-.contFormArea .form-submit .wpcf7-spinner {
+.formCol.formWhite .form-submit input {
+    color: #EFF627;
+}
+
+.formCol.formWhite .form-submit input {
+    border-bottom: 1px solid #EFF627;
+}
+
+.formCol .form-submit .wpcf7-spinner {
     position: absolute;
     right: -23px;
     margin: 0px;
 }
 
-.contFormArea .formCol .wpcf7-response-output {
+.formCol .wpcf7-response-output {
     position: absolute;
     left: 0;
     right: 0;
-    margin: 0;
+    margin: 0 !important;
     font-size: 14px;
-    margin-top: 20px;
+    margin-top: 20px !important;
 }
 
 .floatNav {
@@ -1672,7 +1800,8 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 75vh;
+    /* height: 75vh; */
+    max-height: 75vh;
 }
 
 .floatNavItem {
@@ -1804,10 +1933,23 @@ img {
     padding-bottom: 35px;
 }
 
-.solItem {
+.solItem,
+.projMainInfo .desc li {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.projMainInfo .desc ul {
+    padding: 0;
+    margin: 0;
+}
+
+.projMainInfo .desc li {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .projFeatImg {
@@ -1849,10 +1991,466 @@ img {
 }
 
 .relProjSec .secHead {
-    max-width: 50%;
+    /* max-width: 50%; */
+    max-width: 38%;
 }
 
 /* Project detail page styles end */
+
+/* Products list page styles start */
+
+.allprodList {
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    row-gap: 50px;
+    align-items: flex-start;
+}
+
+.allprodList .prodItem {
+    flex: 0 0 auto;
+    width: 24%;
+}
+
+.allprodList .allprojItem .prodInfo p {
+    line-height: 1.3;
+}
+
+/* Products list page styles end */
+
+/* Contact page styles start */
+
+.page-template-content-contact .mainHeader .mainNav ul li a {
+    color: #FFF;
+}
+
+.page-template-content-contact .mainHeader:not(.absoluteHeader) .headerInner {
+    border-color: #fff;
+}
+
+.page-template-content-contact .logo img {
+    max-width: 170px;
+}
+
+.contHeadSec {
+    padding-top: 107px;
+    padding-bottom: 150px;
+}
+
+.contHeadSec .subTitle,
+.engMainInfo .subTitle,
+.resoIntroSec .subTitle,
+.qhseIntroSec .subTitle,
+.plainCont .subTitle {
+    text-transform: none;
+    letter-spacing: -0.4px;
+}
+
+.formVidCol .vidArea video {
+    width: 100%;
+    height: 580px;
+    max-height: 580px;
+    object-fit: cover;
+}
+
+.formVidCol .contFormArea {
+    align-items: flex-end;
+    gap: 110px;
+}
+
+.addrsInfo {
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.adrs a {
+    color: #EFF627;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.4px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.phone a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.contHeadSec .formCol .form-group {
+    padding-top: 50px;
+}
+
+.contHeadSec .formCol .form-group textarea {
+    height: 70px;
+}
+
+.contHeadSec .formCol .form-submit {
+    padding-top: 38px;
+}
+
+.resourceSec {
+    background: #000;
+}
+
+/* .resBanImg .imgArea::before {
+    content: '';
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+} */
+
+.resBanImg .imgArea img {
+    max-height: 590px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.resCont {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.resCont .ctaArea {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    gap: 110px;
+}
+
+.resCont .ctaBtn a:hover {
+    color: white;
+}
+
+/* Contact page styles end */
+
+/* Engineering page styles start */
+
+.engIntroSec .borderTop {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+}
+
+.engMainInfo {
+    padding-top: 90px;
+    max-width: 68.2%;
+    margin-left: 18%;
+}
+
+.engMainInfo .desc p,
+.engProdCont .desc p {
+    margin-bottom: 30px;
+    line-height: 1.3;
+    letter-spacing: -0.48px;
+}
+
+.engMainInfo .ctaArea {
+    padding-top: 24px;
+}
+
+.engFeatImg {
+    padding: 0px 0px 38px 26px;
+    margin-left: 30px;
+    border-left: 1px solid rgba(0, 0, 0, 0.37);
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.37); */
+}
+
+.engProdCont {
+    max-width: 58.5%;
+    margin-left: 17%;
+}
+
+.engProdCont .subTitle {
+    letter-spacing: -0.4px;
+    padding-bottom: 34px;
+    padding-right: 40px;
+    text-transform: none;
+}
+
+.engProdImg {
+    border-right: 1px solid rgba(0, 0, 0, 0.37);
+    padding-top: 40px;
+    padding-bottom: 38px;
+    padding-right: 39px;
+}
+
+.engResSec .resCont .ctaArea {
+    gap: 79px;
+}
+
+/* Engineering page styles end */
+
+/* Resources page styles start */
+
+.resoIntroSec {
+    padding-top: 58px;
+    padding-bottom: 70px;
+}
+
+.resoTabArea {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid rgba(0, 0, 0, 0.37);
+    margin-top: 25px;
+}
+
+.resoList {
+    border-right: 1px solid rgba(0, 0, 0, 0.37);
+}
+
+.resoItem {
+    /* max-width: 50%; */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+    padding-right: 15px;
+}
+
+.resoItem.active {
+    border-color: #0C56B7;
+}
+
+.resoItemHead,
+.dwnldReso {
+    /* padding: 16px 0px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 70px;
+}
+
+.resoItemHead img {
+    width: 12px;
+    height: auto;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+.resoItem.active .resoItemHead img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.resoTitle {
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.6px;
+    transition: .3s ease-in-out;
+}
+
+.resoItem.active .resoTitle {
+    color: #0C56B7;
+    font-weight: 700;
+}
+
+.resoSubItem,
+.dwnldReso .ctaBtn {
+    position: absolute;
+    /* inset: 0; */
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+    pointer-events: none;
+}
+
+.dwnldReso .ctaBtn {
+    right: 0;
+}
+
+.resoSubItem.active,
+.dwnldReso.active .ctaBtn {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    position: relative;
+}
+
+.dwnldReso {
+    padding-left: 33px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+    height: 71px;
+    position: relative;
+}
+
+.dwnldReso h5 {
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.4px;
+}
+
+/* Resources page styles end */
+
+/* QHSE page styles start */
+
+.qhseIntroSec {
+    padding-top: 99px;
+}
+
+.qhseIntroSec .secHead {
+    max-width: 65%;
+}
+
+.qhseIntroSec .xlTitle {
+    line-height: 1.1;
+}
+
+.qhseContRow {
+    padding-top: 120px;
+}
+
+.qhseMainCont {
+    padding-right: 30px;
+}
+
+.qhseMainCont .imgArea {
+    padding-top: 80px;
+}
+
+.qhseHowCont {
+    border-left: 1px solid rgba(0, 0, 0, 0.37);
+}
+
+.qhseHowCont .titleArea {
+    padding-left: 34px;
+}
+
+.qhseList {
+    padding-top: 21px;
+}
+
+.qhseItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 31px;
+    padding: 21px 0px;
+    padding-left: 34px;
+    padding-right: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+}
+
+.qhseItem:last-child {
+    border-bottom: none;
+}
+
+.qhseItem .imgArea {
+    width: 35px;
+    flex: 0 0 auto;
+}
+
+.qhseItem .imgArea img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.qhseItem .desc p {
+    line-height: 1.4;
+}
+
+.commitSec .container-theme {
+    width: 85%;
+    margin: auto;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.commitSec .row {
+    align-items: flex-end;
+}
+
+.commitSec .plainCont {
+    padding-right: 35px;
+}
+
+.commitSec .plainCont .desc:not(:first-child),
+.commitSec .plainCont .desc h4:not(:first-child) {
+    padding-top: 50px;
+}
+
+.commitSec .plainCont .desc h4 {
+    max-width: 90%;
+    padding-bottom: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+    color: #0C56B7;
+}
+
+/* .commitSec .plainCont .desc h4:not(:first-child) {
+    padding-top: 50px;
+} */
+
+.commitSec .plainCont .desc ol {
+    padding: 0px;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.commitSec .plainCont .desc ul {
+    margin: 0;
+    padding: 0px;
+}
+
+.commitSec .plainCont .desc ol ul {
+    padding-top: 20px;
+}
+
+.commitSec .plainCont .desc ol li,
+.commitSec .plainCont .desc ul li {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+}
+
+.commitSec .plainCont .desc ul li {
+    padding-right: 0px;
+    /* flex: 1 0 33%; */
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.plainCont ul li::before {
+    margin-top: 12px;
+}
+
+.plainCont li ul li::before {
+    flex: 0 0 auto;
+}
+
+.commitImgArea {
+    padding-bottom: 20px;
+}
+
+.commitImgArea img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    height: 490px;
+    max-height: 490px;
+}
+
+/* QHSE page styles end */
 
 /* Footer styles start */
 
@@ -2056,7 +2654,9 @@ img {
     }
 
     .prodInfo p,
-    .projInfo p {
+    .projInfo p,
+    .commitSec .plainCont .desc ol li,
+    .commitSec .plainCont .desc ul li {
         font-size: 18px;
     }
 
@@ -2108,7 +2708,10 @@ img {
     .productMain .desc p,
     .productMain .desc ul li,
     .certifContSec .desc p,
-    .faqHead h4 {
+    .faqHead h4,
+    .engMainInfo .desc p,
+    .engProdCont .desc p,
+    .qhseMainCont .desc p {
         font-size: 21px;
     }
 
@@ -2157,6 +2760,72 @@ img {
     }
 
     /* Projects page styles */
+
+    /* Contact page styles */
+
+    .addrsInfo {
+        padding-top: 60px;
+    }
+
+    .adrsBox .subTitle,
+    .adrsBox .desc p,
+    .adrs a,
+    .qhseItem .desc p {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .formVidCol .vidArea video {
+        width: 100%;
+        height: 540px;
+        max-height: 540px;
+    }
+
+    .contHeadSec .formCol .form-group {
+        padding-top: 45px;
+    }
+
+    /* Contact page styles */
+
+    /* Engineering page styles */
+
+    .engMainInfo {
+        max-width: 69%;
+    }
+
+    .engMainInfo .ctaArea {
+        padding-top: 10px;
+    }
+
+    .ctaBtn a {
+        font-size: 12px;
+    }
+
+    /* Engineering page styles */
+
+    /* QHSE page styles */
+
+    .qhseIntroSec {
+        padding-top: 70px;
+    }
+
+    .qhseContRow {
+        padding-top: 100px;
+    }
+
+    .qhseMainCont {
+        padding-right: 20px;
+    }
+
+    .qhseItem .imgArea {
+        width: 30px;
+    }
+
+    .qhseMainCont .imgArea {
+        padding-top: 60px;
+    }
+
+    /* QHSE page styles */
 }
 
 @media (max-width: 1600px) {
@@ -2169,9 +2838,9 @@ img {
         font-size: 36px;
     }
 
-    .mainHeader {
+    /* .mainHeader {
         padding-top: 30px;
-    }
+    } */
 
     .logo img {
         width: 125px;
@@ -2250,7 +2919,8 @@ img {
     }
 
     .statsSec,
-    .prodsSec {
+    .prodsSec,
+    .contHeadSec {
         padding-top: 100px;
         padding-bottom: 100px;
     }
@@ -2364,7 +3034,10 @@ img {
         font-size: 14px;
     }
 
-    .guideTitle {
+    .guideTitle,
+    .engMainInfo .desc p,
+    .engProdCont .desc p,
+    .qhseMainCont .desc p {
         font-size: 20px;
     }
 
@@ -2401,7 +3074,12 @@ img {
         font-size: 30px;
     }
 
-    .newsInfo .desc p {
+    .newsInfo .desc p,
+    .qhseItem .desc p,
+    .prodInfo p,
+    .projInfo p,
+    .commitSec .plainCont .desc ol li,
+    .commitSec .plainCont .desc ul li {
         font-size: 16px;
     }
 
@@ -2459,6 +3137,7 @@ img {
 
     .contFormArea .form-group input,
     .contFormArea .form-group textarea,
+    .contFormArea .form-group select,
     .contFormArea .form-group textarea::placeholder,
     .contFormArea .form-group input::placeholder {
         font-size: 12px;
@@ -2469,6 +3148,26 @@ img {
     }
 
     /* Product page styles */
+
+    /* Contact page styles */
+
+    .contHeadSec .formCol .form-group {
+        padding-top: 40px;
+    }
+
+    .addrsInfo {
+        padding-top: 50px;
+    }
+
+    .xlTitle {
+        font-size: 60px;
+    }
+
+    .resCont .ctaArea {
+        gap: 70px;
+    }
+
+    /* Contact page styles */
 
     .footerContent {
         padding-top: 70px;
@@ -2607,7 +3306,9 @@ img {
 
     .productMain .desc p,
     .productMain .desc ul li,
-    .certifContSec .desc p {
+    .certifContSec .desc p,
+    .engMainInfo .desc p,
+    .engProdCont .desc p {
         font-size: 18px;
     }
 
@@ -2621,6 +3322,78 @@ img {
     }
 
     /* Projects page styles */
+
+    /* Contact page styles */
+
+    .contHeadSec .formCol .form-group {
+        padding-top: 30px;
+    }
+
+    .formVidCol .vidArea video {
+        height: 500px;
+        max-height: 500px;
+    }
+
+    .ctaBtn a {
+        font-size: 10px;
+    }
+
+    /* Contact page styles */
+
+    /* Engineering page styles */
+
+    .engMainInfo {
+        max-width: 70%;
+        padding-top: 70px;
+    }
+
+    .engMainInfo .ctaArea,
+    .engProdCont .ctaArea {
+        padding-top: 0px;
+        margin-top: 35px !important;
+    }
+
+    .engProdCont .subTitle {
+        padding-bottom: 25px;
+    }
+
+    .engResSec .resCont .ctaArea {
+        gap: 60px;
+    }
+
+    /* Engineering page styles */
+
+    /* QHSE page styles */
+
+    .qhseContRow {
+        padding-top: 80px;
+    }
+
+    .qhseMainCont .desc p {
+        line-height: 1.3;
+        font-size: 18px;
+    }
+
+    .qhseList {
+        padding-top: 11px;
+    }
+
+    .commitSec .container-theme {
+        width: 87%;
+        padding-top: 50px;
+        padding-bottom: 40px;
+    }
+
+    .commitImgArea img {
+        height: 420px;
+        max-height: 420px;
+    }
+
+    .commitSec .plainCont .desc:not(:first-child) {
+        padding-top: 30px;
+    }
+
+    /* QHSE page styles */
 }
 
 @media (min-width: 992px) {
@@ -2638,6 +3411,31 @@ img {
         flex: 0 0 auto;
         width: 45%;
     }
+
+    .contHeadSec .infoCol {
+        flex: 0 0 auto;
+        width: 31%;
+    }
+
+    .contHeadSec .formVidCol {
+        flex: 0 0 auto;
+        width: 63%;
+    }
+
+    .formVidCol .contFormArea .formCol {
+        flex: 0 0 40%;
+    }
+
+    .commitSec .col-1 {
+        flex: 0 0 auto;
+        width: 62%;
+    }
+
+    .commitSec .col-2 {
+        flex: 0 0 auto;
+        width: 38%;
+        padding-right: 0px;
+    }
 }
 
 @media (max-width: 991px) {
@@ -2652,6 +3450,10 @@ img {
 
     .mw-100-mob {
         max-width: 100%;
+    }
+
+    .xlTitle {
+        font-size: 50px;
     }
 
     .mainTitle {
@@ -2688,6 +3490,14 @@ img {
     .projGrid {
         grid-row: 1;
         grid-column: 1;
+    }
+
+    .formVidCol .contFormArea {
+        align-items: normal;
+    }
+
+    .resoTabArea {
+        grid-template-columns: 1fr;
     }
 }
 

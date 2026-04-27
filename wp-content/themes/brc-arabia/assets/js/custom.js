@@ -1,32 +1,50 @@
 // Custom Scripts
 
 jQuery(document).ready(function ($) {
-    //toggle the component with class accordion_body
-    $(".faqHead").click(function () {
-        if ($('.faqDesc').is(':visible')) {
-            $(".faqDesc").slideUp(300);
-            $(".plusminus").text('+');
-        }
-        if ($(this).next(".faqDesc").is(':visible')) {
-            $(this).next(".faqDesc").slideUp(300);
-            $(this).children(".plusminus").text('+');
-        } else {
-            $(this).next(".faqDesc").slideDown(300);
-            $(this).children(".plusminus").text('-');
-        }
-    });
-});
+
+  //FAQ toggle function
+  $(".faqHead").click(function () {
+    if ($('.faqDesc').is(':visible')) {
+      $(".faqDesc").slideUp(300);
+      $(".plusminus").text('+');
+    }
+    if ($(this).next(".faqDesc").is(':visible')) {
+      $(this).next(".faqDesc").slideUp(300);
+      $(this).children(".plusminus").text('+');
+    } else {
+      $(this).next(".faqDesc").slideDown(300);
+      $(this).children(".plusminus").text('-');
+    }
+  });
+
+  // Resources tab function
+  $('.resoItem').on('mouseenter click', function () {
+    var tabId = $(this).data('tab');
+
+    $('.resoItem').removeClass('active');
+    $(this).addClass('active');
+
+    $('.resoSubItem').removeClass('active');
+    $('.resoSubItem[data-tab="' + tabId + '"]').addClass('active');
+  });
+
+  $('.dwnldReso').on('mouseenter click', function () {
+    $('.dwnldReso').removeClass('active');
+    $(this).addClass('active');
+  });
+
+}); // document.ready function end
 
 const element = document.querySelectorAll('.qualItem');
 element.forEach(element => {
 
-    element.addEventListener('mouseenter', () => {
-        element.classList.add('show');
-    });
+  element.addEventListener('mouseenter', () => {
+    element.classList.add('show');
+  });
 
-    element.addEventListener('mouseleave', () => {
-        element.classList.remove('show');
-    });
+  element.addEventListener('mouseleave', () => {
+    element.classList.remove('show');
+  });
 
 });
 
@@ -37,42 +55,42 @@ const mm = gsap.matchMedia();
 
 mm.add("(min-width: 992px)", () => {
 
-    let tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: ".vismisSec",
-            start: "top 30%",
-            end: "bottom 20%",
-            sscrub: 2,
-            invalidateOnRefresh: true,
-            // markers: true
-        }
-    });
-    window.addEventListener("load", () => {
-        ScrollTrigger.refresh();
-    });
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".vismisSec",
+      start: "top 30%",
+      end: "bottom 20%",
+      sscrub: 2,
+      invalidateOnRefresh: true,
+      // markers: true
+    }
+  });
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+  });
 
-    tl.to(".visCont", {
-        x: "30%",
-        // scaleX: 1.25,
-        transformOrigin: "left center",
-        zIndex: 3,
-        duration: 1.5,
-        ease: "power3.out"
-    }, 0);
+  tl.to(".visCont", {
+    x: "30%",
+    // scaleX: 1.25,
+    transformOrigin: "left center",
+    zIndex: 3,
+    duration: 1.5,
+    ease: "power3.out"
+  }, 0);
 
-    tl.to(".misCont", {
-        x: "60%",
-        // scaleX: 1.6,
-        transformOrigin: "left center",
-        zIndex: 4,
-        duration: 1.5,
-        ease: "power3.out"
-    }, 0.15);
+  tl.to(".misCont", {
+    x: "60%",
+    // scaleX: 1.6,
+    transformOrigin: "left center",
+    zIndex: 4,
+    duration: 1.5,
+    ease: "power3.out"
+  }, 0.15);
 });
 
 // Products page projects slider
 const relProjList = new Swiper('.relProjList', {
-//   freeMode: true,
+  //   freeMode: true,
   slidesPerView: 3.8,
   spaceBetween: 20,
   navigation: {

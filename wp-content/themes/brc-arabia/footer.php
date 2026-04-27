@@ -18,20 +18,20 @@
 			<div class="col-lg-5 col-12">
 				<div class="footLogo">
 					<div class="imgArea">
-						<img src="<?php bloginfo('template_directory'); ?>/assets/media/footer-logo-brc.svg" alt="BRC Arabia">
+						<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_white.svg" alt="BRC Arabia">
 					</div>
 				</div>
 				<div class="locations">
 					<div class="location">
 						<h4 class="text-white">Dubai</h4>
-						<p class="text-white mb-0">PO Box 490008<br/>
-							Dubai Industrial Park<br/>
+						<p class="text-white mb-0">PO Box 490008<br />
+							Dubai Industrial Park<br />
 							Dubai - UAE</p>
 					</div>
 					<div class="location">
 						<h4 class="text-white">abu dhabi</h4>
-						<p class="text-white mb-0">PO Box 490008<br/>
-							Dubai Industrial Park<br/>
+						<p class="text-white mb-0">PO Box 490008<br />
+							Dubai Industrial Park<br />
 							Dubai - UAE</p>
 					</div>
 				</div>

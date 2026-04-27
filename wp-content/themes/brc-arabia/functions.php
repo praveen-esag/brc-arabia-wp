@@ -197,6 +197,18 @@ if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+if ( function_exists( 'acf_add_options_page' ) ) {
+
+	acf_add_options_page( array(
+		'page_title'	=> 'Theme Options',
+		'menu_title'	=> 'Theme Options',
+		'menu_slug' 	=> 'acf-theme-options',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false,
+	));
+
+}
+
 /**
  * Validation to remove Special charecters from the text field
  */
@@ -226,3 +238,23 @@ add_filter('wpcf7_form_autocomplete', function ($autocomplete) {
 	$autocomplete = 'off';
 	return $autocomplete;
 }, 10, 1);
+
+add_action('admin_head', function () {
+    echo '<style>
+    .acf-field[data-name="cells"] .acf-table tbody tr {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .acf-field[data-name="cells"] .acf-table tbody tr td {
+        width: 20% !important; /* 5 per row */
+        box-sizing: border-box;
+    }
+    .acf-field[data-name="cells"] .acf-input {
+        padding: 4px;
+    }
+    .acf-field[data-name="cells"] input {
+        width: 100%;
+    }
+
+    </style>';
+});
