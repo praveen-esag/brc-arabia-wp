@@ -15,12 +15,12 @@ get_header(); ?>
     <div class="container-theme">
         <div class="row1">
             <div class="secHead">
-                <h4 class="subTitle mb-0">BRC Arabia</h4>
-                <h1 class="xlTitle">Resources</h1>
+                <h4 class="subTitle mb-0" data-aos="fade-up" data-aos-duration="1200">BRC Arabia</h4>
+                <h1 class="xlTitle" data-aos="fade-up" data-aos-duration="1500"><?php the_title(); ?></h1>
             </div>
             <?php if (have_rows('_resources_types')) : ?>
                 <div class="resoTabArea">
-                    <div class="resoList">
+                    <div class="resoList" data-aos="fade-up" data-aos-duration="1800">
                         <?php
                         $reso_main = 1;
                         while (have_rows('_resources_types')) : the_row(); ?>
@@ -58,7 +58,7 @@ get_header(); ?>
                             </div>
                         </div> -->
                     </div>
-                    <div class="resoSubList position-relative">
+                    <div class="resoSubList position-relative" data-aos="fade-up" data-aos-duration="1600">
                         <?php
                         $reso_sub = 1;
                         while (have_rows('_resources_types')) : the_row(); ?>
@@ -200,35 +200,7 @@ get_header(); ?>
 
 <section class="seemoreSec">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-12 p-0">
-                <div class="seemoreLinks position-relative">
-                    <div class="seemoreLink">
-                        <div class="ctaArea">
-                            <h4 class="subTitle color-theme">See more</h4>
-                            <a href="#" class="text-black">About BRC Arabia</a>
-                        </div>
-                    </div>
-                    <div class="seemoreLink">
-                        <div class="ctaArea">
-                            <a href="#" class="text-black">QHSE</a>
-                        </div>
-                    </div>
-                    <div class="seemoreLink">
-                        <div class="ctaArea">
-                            <a href="#" class="text-black">Engineering service</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-12 p-0">
-                <div class="seemoreImgArea">
-                    <div class="imgArea">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/seemore_bg.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php get_template_part('template-parts/sections/seemore-section'); ?>
     </div>
 </section>
 

@@ -3,17 +3,37 @@
 jQuery(document).ready(function ($) {
 
   //FAQ toggle function
+  // $(".faqHead").click(function () {
+  //   $('.faqItem').removeClass('activeFaq');
+  //   $(this).parent().addClass('activeFaq');
+  //   if ($('.faqDesc').is(':visible')) {
+  //     $(".faqDesc").slideUp(300);
+  //     // $(".plusminus").removeClass('faqOpen');
+  //   }
+  //   if ($(this).next(".faqDesc").is(':visible')) {
+  //     $(this).next(".faqDesc").slideUp(300);
+  //     // $(this).children(".plusminus").addClass('faqOpen');
+  //   } else {
+  //     $(this).next(".faqDesc").slideDown(300);
+  //     // $(this).children(".plusminus").removeClass('faqOpen');
+  //   }
+  // });
   $(".faqHead").click(function () {
-    if ($('.faqDesc').is(':visible')) {
-      $(".faqDesc").slideUp(300);
-      $(".plusminus").text('+');
-    }
-    if ($(this).next(".faqDesc").is(':visible')) {
-      $(this).next(".faqDesc").slideUp(300);
-      $(this).children(".plusminus").text('+');
+    const parent = $(this).parent();
+    const desc = $(this).next(".faqDesc");
+
+    // if already open → close it
+    if (parent.hasClass("activeFaq")) {
+      parent.removeClass("activeFaq");
+      desc.slideUp(300);
     } else {
-      $(this).next(".faqDesc").slideDown(300);
-      $(this).children(".plusminus").text('-');
+      // close others
+      $(".faqItem").removeClass("activeFaq");
+      $(".faqDesc").slideUp(300);
+
+      // open this one
+      parent.addClass("activeFaq");
+      desc.slideDown(300);
     }
   });
 
@@ -31,6 +51,19 @@ jQuery(document).ready(function ($) {
   $('.dwnldReso').on('mouseenter click', function () {
     $('.dwnldReso').removeClass('active');
     $(this).addClass('active');
+  });
+
+  $('.toggleIcon').on('click', function () {
+    $(this).toggleClass('active');
+    $('#headerMain').toggleClass('menu-open');
+    $('body').toggleClass('nav-open');
+  });
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('#headerMain').length) {
+      $('.toggleIcon').removeClass('active');
+      $('#headerMain').removeClass('menu-open');
+      $('body').removeClass('nav-open');
+    }
   });
 
 }); // document.ready function end
@@ -60,7 +93,7 @@ mm.add("(min-width: 992px)", () => {
       trigger: ".vismisSec",
       start: "top 30%",
       end: "bottom 20%",
-      sscrub: 2,
+      scrub: 2,
       invalidateOnRefresh: true,
       // markers: true
     }
@@ -102,6 +135,20 @@ const relProjList = new Swiper('.relProjList', {
     releaseOnEdges: true, // allow page scroll when at first/last slide
     sensitivity: 1,       // optional: adjust scroll sensitivity
   },
+  breakpoints: {
+    0: {
+      slidesPerView: 1.2,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 2.3,
+      spaceBetween: 20,
+    },
+    1024: {
+      slidesPerView: 3.8,
+      spaceBetween: 20,
+    },
+  },
 });
 
 const sections = document.querySelectorAll(".productInner section");
@@ -132,3 +179,68 @@ const observer = new IntersectionObserver(
 
 // observe all sections
 sections.forEach((section) => observer.observe(section));
+
+// Product menu preview function
+const items = document.querySelectorAll('.leftNav .menu > li > a.has-preview');
+const preview = document.querySelector('.menu-preview');
+const img = preview.querySelector('img');
+const btn = preview.querySelector('a');
+
+let activeItem = null;
+let timeout;
+
+items.forEach(item => {
+
+  item.addEventListener('mouseenter', () => {
+    clearTimeout(timeout);
+
+    // remove previous active
+    items.forEach(i => i.classList.remove('active-link'));
+
+    activeItem = item;
+    item.classList.add('active-link');
+
+    const rect = item.getBoundingClientRect();
+    const parentRect = item.closest('.leftNav').getBoundingClientRect();
+
+    img.src = item.dataset.img;
+    if (btn) btn.href = item.dataset.link;
+
+    preview.style.left = (rect.left - parentRect.left) + 'px';
+    // preview.style.top = (rect.bottom - parentRect.top) + 'px';
+
+    preview.classList.add('show');
+    const previewWidth = preview.offsetWidth;
+    const itemWidth = rect.width;
+
+    preview.style.left =
+      (rect.left - parentRect.left) + (itemWidth / 2) - (previewWidth / 2) + 'px';
+  });
+
+  item.addEventListener('mouseleave', () => {
+    timeout = setTimeout(() => {
+      if (!preview.matches(':hover')) {
+        preview.classList.remove('show');
+
+        if (activeItem) {
+          activeItem.classList.remove('active-link');
+          activeItem = null;
+        }
+      }
+    }, 150);
+  });
+});
+
+// keep active while hovering preview
+preview.addEventListener('mouseenter', () => {
+  clearTimeout(timeout);
+});
+
+preview.addEventListener('mouseleave', () => {
+  preview.classList.remove('show');
+
+  if (activeItem) {
+    activeItem.classList.remove('active-link');
+    activeItem = null;
+  }
+});

@@ -36,7 +36,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-5 col-12">
+			<div class="col-lg-5 col-12 footnavCol">
 				<div class="footNav">
 					<div class="footNavItem">
 						<h4 class="text-white">BRC Arabia</h4>
@@ -74,7 +74,7 @@
 				</a>
 			</div>
 			<div class="credits">
-				<p class="mb-0 text-end">built by Born28</p>
+				<p class="mb-0 text-end">built by <a href="https://www.born28.com" target="_blank" class="linkInherit hover_white">Born28</a></p>
 			</div>
 		</div>
 	</div>

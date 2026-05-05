@@ -20,28 +20,29 @@ get_header(); ?>
                 <div class="row justify-content-between">
                     <div class="col-lg-5 col-12 projContCol">
                         <div class="projMainInfo position-relative">
-                            <div class="backCta">
+                            <div class="backCta" data-aos="fade-up" data-aos-duration="1200">
                                 <img src="<?php bloginfo('template_directory'); ?>/assets/media/backto_arrow.svg" alt="Back Arrow">
                                 <a href="<?php echo home_url('/') ?>projects" class="text-black">Back to projects</a>
                             </div>
                             <div class="secHead">
-                                <h1 class="xlTitle mb-0"><?php the_title(); ?></h1>
-                                <div class="desc">
+                                <h1 class="xlTitle mb-0" data-aos="fade-up" data-aos-duration="1400"><?php the_title(); ?></h1>
+                                <div class="desc" data-aos="fade-up" data-aos-duration="1600">
                                     <?php the_content(); ?>
-                                    <!-- <p>Amet lorem viverra vestibulum ut fames morbi. Aliquam hac ultrices tellus ac neque. Vestibulum pellentesque condimentum egestas phasellus.</p> -->
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="solutionInfo">
-                            <div class="titleArea pb-2">
-                                <h4>solutions provided:</h4>
+                        <?php if (have_rows('_sol_prov_list')) : ?>
+                            <div class="solutionInfo">
+                                <div class="titleArea pb-2" data-aos="fade-up" data-aos-duration="1400">
+                                    <h4><?php the_field('_sol_prov_title'); ?></h4>
+                                </div>
+                                <div class="solList">
+                                    <?php while (have_rows('_sol_prov_list')) : the_row(); ?>
+                                        <div class="solItem position-relative" data-aos="fade-up" data-aos-duration="1500"><?php the_sub_field('_sol_prov_item'); ?></div>
+                                    <?php endwhile; ?>
+                                </div>
                             </div>
-                            <div class="solList">
-                                <div class="solItem position-relative">Cut & bent rebar</div>
-                                <div class="solItem position-relative">Welded wire mesh</div>
-                                <div class="solItem position-relative">Cold drawn wire</div>
-                            </div>
-                        </div> -->
+                        <?php endif; ?>
                     </div>
                     <div class="col-lg-7 col-12">
                         <?php if (has_post_thumbnail()): ?>
@@ -75,7 +76,7 @@ get_header(); ?>
                         </div>
                         <div class="col-lg-7 col-12">
                             <div class="projDetCont">
-                                <div class="desc">
+                                <div class="desc" data-aos="fade-up" data-aos-duration="1200">
                                     <?php the_field('_project_detail_content'); ?>
                                 </div>
                             </div>
@@ -104,9 +105,9 @@ get_header(); ?>
             <section class="relProjSec otherProjSec bg_theme_grey">
                 <div class="container-left">
                     <div class="secHead">
-                        <h3 class="mainTitle">Other projects with BRC</h3>
+                        <h3 class="mainTitle" data-aos="fade-up" data-aos-duration="1200">Other projects with BRC</h3>
                     </div>
-                    <div class="relProjList swiper">
+                    <div class="relProjList swiper" data-aos="fade-up" data-aos-duration="1600">
                         <div class="swiper-wrapper">
                             <?php while ($projquery->have_posts()): $projquery->the_post(); ?>
                                 <div class="swiper-slide">
@@ -119,11 +120,12 @@ get_header(); ?>
                                             </div>
                                         <?php endif; ?>
                                         <div class="prodInfo">
-                                            <p><a href="<?php the_permalink(); ?>" class="linkInherit"><?php the_title(); ?></p>
+                                            <p><a href="<?php the_permalink(); ?>" class="linkInherit"><?php the_title(); ?></a></p>
                                         </div>
                                     </div>
                                 </div>
-                            <?php endwhile; ?>
+                            <?php endwhile;
+                            wp_reset_postdata(); ?>
                             <!-- <div class="swiper-slide">
                             <div class="relProjItem prodItem">
                                 <div class="projImg">
@@ -156,7 +158,7 @@ get_header(); ?>
                         </div> -->
                         </div>
                     </div>
-                    <div class="projSwiperNav">
+                    <div class="projSwiperNav" data-aos="fade-up" data-aos-duration="1800">
                         <div class="swiper-button-prev">
                             <img src="<?php bloginfo('template_directory'); ?>/assets/media/arrow-left-theme.svg" alt="Next" />
                         </div>
@@ -172,7 +174,7 @@ get_header(); ?>
 
         <!-- Seemore section start -->
 
-        <section class="seemoreSec borderTop">
+        <!-- <section class="seemoreSec borderTop">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 col-12 p-0">
@@ -203,6 +205,12 @@ get_header(); ?>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section> -->
+
+        <section class="seemoreSec borderTop">
+            <div class="container-fluid">
+                <?php get_template_part('template-parts/sections/seemore-section'); ?>
             </div>
         </section>
 

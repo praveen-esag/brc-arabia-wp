@@ -16,12 +16,12 @@ get_header(); ?>
         <div class="row justify-content-between borderTop">
             <div class="col-lg-5 col-12 engContCol">
                 <div class="engMainInfo position-relative">
-                    <div class="secHead">
+                    <div class="secHead" data-aos="fade-up" data-aos-duration="1200">
                         <?php if (get_field('_eng_sec_subtitle')): ?>
                             <h4 class="subTitle color-theme mb-2"><?php the_field('_eng_sec_subtitle'); ?></h4>
                         <?php endif; ?>
                         <h1 class="xlTitle mb-5"><?php the_title(); ?></h1>
-                        <div class="desc">
+                        <div class="desc" data-aos="fade-up" data-aos-duration="1400">
                             <!-- <p class="text-dark">BRC Arabia provides reinforcement detailing services based on approved construction drawings, utilizing advanced AutoCAD and specialised CAD RC software to produce precise bar detailing and Bar Bending Schedules for client and consultant approval.</p>
                             <p class="text-dark">While not involved in structural design, the Engineering team supports clients by identifying discrepancies, coordinating with consultants, and ensuring clarity through continuous engagement to maintain smooth project execution and avoid delays.</p> -->
                             <?php the_content(); ?>
@@ -29,7 +29,7 @@ get_header(); ?>
                     </div>
                     <?php $_eng_bansec_btn_link = get_field('_eng_bansec_btn_link'); ?>
                     <?php if ($_eng_bansec_btn_link) : ?>
-                        <div class="ctaArea mt-5">
+                        <div class="ctaArea mt-5" data-aos="fade-up" data-aos-duration="1600">
                             <div class="ctaBtn maxCont">
                                 <a href="<?php echo esc_url($_eng_bansec_btn_link); ?>" class="color-theme"><?php the_field('_eng_bansec_btn_txt'); ?></a>
                             </div>
@@ -71,15 +71,15 @@ get_header(); ?>
                     <div class="col-lg-6 col-12">
                         <div class="engProdCont">
                             <div class="titleArea">
-                                <h4 class="subTitle"><?php the_sub_field('_eng_cont_title'); ?></h4>
+                                <h4 class="subTitle" data-aos="fade-up" data-aos-duration="1200"><?php the_sub_field('_eng_cont_title'); ?></h4>
                             </div>
-                            <div class="desc">
+                            <div class="desc" data-aos="fade-up" data-aos-duration="1400">
                                 <?php the_sub_field('_eng_cont_box'); ?>
                             </div>
                             <?php $_eng_cont_btnlink = get_sub_field('_eng_cont_btnlink'); ?>
                             <?php if ($_eng_cont_btnlink) : ?>
                                 <div class="ctaArea mt-5">
-                                    <div class="ctaBtn maxCont">
+                                    <div class="ctaBtn maxCont" data-aos="fade-up" data-aos-duration="1600">
                                         <a href="<?php echo esc_url($_eng_cont_btnlink); ?>" class="color-theme"><?php the_sub_field('_eng_cont_btntxt'); ?></a>
                                     </div>
                                 </div>
@@ -107,11 +107,11 @@ get_header(); ?>
         </div>
         <div class="container-theme resCont">
             <div class="secHead position-relative">
-                <h2 class="xlTitle text-white"><?php the_field('_eng_res_sec_title'); ?></h2>
+                <h2 class="xlTitle text-white" data-aos="fade-up" data-aos-duration="1200"><?php the_field('_eng_res_sec_title'); ?></h2>
                 <?php if (have_rows('_eng_resources_list')): ?>
                 <div class="ctaArea flexNav">
                     <?php while (have_rows('_eng_resources_list')) : the_row(); ?>
-                        <div class="ctaBtn">
+                        <div class="ctaBtn" data-aos="fade-up" data-aos-duration="1400">
                             <a href="<?php the_sub_field('_eng_resource_file'); ?>" class="btn_yellow"><?php the_sub_field('_eng_resourse_name'); ?></a>
                         </div>
                     <?php endwhile; ?>

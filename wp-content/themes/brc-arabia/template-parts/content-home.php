@@ -12,58 +12,89 @@ get_header(); ?>
 
 <!-- Banner section start -->
 
-<section class="bannerSec homeBanner py-0">
-    <div class="container-fluid p-0">
-        <div class="bannerVid position-relative">
-            <video class="bannerVideo d-none" autoplay="" muted="" loop="false" playsinline="" poster="<?php //the_field('_home_banner_video_thumb'); 
-                                                                                                        ?>">
-                <source src="<?php bloginfo('template_directory'); ?>/assets/media/brc-banner-video.mp4" type="video/mp4">
-                <source src="<?php bloginfo('template_directory'); ?>/assets/media/brc-banner-video.mp4" type="video/ogg">
-                No video support.
-            </video>
-            <div class="bannerImg h-100">
-                <img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_banner.png" />
-            </div>
-            <div class="bannerBottom" data-aos="fade-up" data-aos-duration="1000">
-                <div class="textCol">
-                    <h1 class="text-white">Delivering <br />structural confidence</h1>
+<?php if (get_field('_hm_banner_video') || get_field('_hm_banner_image') || get_field('_hm_ban_main_title') || have_rows('_hm_ban_cta_links')) : ?>
+    <section class="bannerSec homeBanner py-0">
+        <div class="container-fluid p-0">
+            <?php if (get_field('_hm_banner_video') || get_field('_hm_banner_image')) : ?>
+                <div class="bannerVid position-relative">
+                    <?php $homevidPoster = get_field('_hm_banner_video_thumb');
+                    if (get_field('_hm_banner_video')) : ?>
+                        <video class="bannerVideo d-none1" autoplay="" muted="" loop="false" playsinline="" poster="<?php echo $homevidPoster; ?>">
+                            <source src="<?php the_field('_hm_banner_video'); ?>" type="video/mp4">
+                            <source src="<?php the_field('_hm_banner_video'); ?>" type="video/ogg">
+                            No video support.
+                        </video>
+                    <?php else :
+                        $_hm_banner_image = get_field('_hm_banner_image'); ?>
+                        <div class="bannerImg h-100">
+                            <img src="<?php echo esc_url($_hm_banner_image['url']); ?>" alt="<?php echo esc_attr($_hm_banner_image['alt']); ?>" />
+                        </div>
+                    <?php endif; ?>
+                    <div class="bannerBottom" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="textCol">
+                            <h1 class="text-white"><?php the_field('_hm_ban_main_title') ?></h1>
+                        </div>
+                        <?php if (have_rows('_hm_ban_cta_links')): ?>
+                            <div class="flexNav">
+                                <?php while (have_rows('_hm_ban_cta_links')) : the_row(); ?>
+                                    <?php $_hm_ban_btn_link = get_sub_field('_hm_ban_btn_link'); ?>
+                                    <?php if ($_hm_ban_btn_link) : ?>
+                                        <div class="flexNavItem ctaBtn">
+                                            <a href="<?php echo esc_url($_hm_ban_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_ban_btn_link['target']); ?>" class="text-white">
+                                                <?php the_sub_field('_hm_ban_btn_txt'); ?>
+                                            </a>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endwhile; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                <div class="flexNav">
-                    <div class="flexNavItem ctaBtn"><a href="#" class="text-white">reliable quality</a></div>
-                    <div class="flexNavItem ctaBtn"><a href="#" class="text-white">full traceability</a></div>
-                    <div class="flexNavItem ctaBtn"><a href="#" class="text-white">stability</a></div>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
-    </div>
-</section>
+    </section>
+<?php endif ?>
 
 <!-- Banner section end -->
 
 <!-- About section start -->
 
-<section id="about-us" class="abtSec primary_bg">
-    <div class="container-fluid p-0">
-        <div class="abtCont">
-            <div class="abtHead">
-                <h4 class="subTitle text-white">Inside BRC Arabia</h4>
-                <h2 class="largeTitle text-white mb-0">BRC Arabia sets the benchmark for quality, reliability and operational excellence.</h2>
-            </div>
-            <div class="abtNav">
-                <div class="flexNav">
-                    <div class="flexNavItem ctaBtn"><a href="#" class="btn_yellow">Who we are</a></div>
-                    <div class="flexNavItem ctaBtn"><a href="#" class="btn_yellow">About Al Gurg Group</a></div>
-                    <div class="flexNavItem ctaBtn"><a href="#" class="btn_yellow">Certifications</a></div>
+<?php if (get_field('_hm_abt_subtitle') || get_field('_hm_abt_title') || have_rows('_hm_abt_cta_links') || get_field('_hm_abt_img')) : ?>
+    <section id="about-us" class="abtSec primary_bg">
+        <div class="container-fluid p-0">
+            <div class="abtCont">
+                <div class="abtHead">
+                    <h4 class="subTitle text-white" data-aos="fade-up" data-aos-duration="1200"><?php the_field('_hm_abt_subtitle'); ?></h4>
+                    <h2 class="largeTitle text-white mb-0" data-aos="fade-up" data-aos-duration="1400"><?php the_field('_hm_abt_title'); ?></h2>
                 </div>
+                <?php if (have_rows('_hm_abt_cta_links')) : ?>
+                    <div class="abtNav">
+                        <div class="flexNav">
+                            <?php while (have_rows('_hm_abt_cta_links')) : the_row(); ?>
+                                <div class="flexNavItem ctaBtn" data-aos="fade-up" data-aos-duration="1300">
+                                    <?php $_hm_abt_btn_link = get_sub_field('_hm_abt_btn_link'); ?>
+                                    <?php if ($_hm_abt_btn_link) : ?>
+                                        <a href="<?php echo esc_url($_hm_abt_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_abt_btn_link['target']); ?>" class="btn_yellow hover_white">
+                                            <?php the_sub_field('_hm_abt_btn_txt'); ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endwhile; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
+            <?php $_hm_abt_img = get_field('_hm_abt_img'); ?>
+            <?php if ($_hm_abt_img) : ?>
+                <div class="abtImg">
+                    <div class="imgArea">
+                        <img src="<?php echo esc_url($_hm_abt_img['url']); ?>" alt="<?php echo esc_attr($_hm_abt_img['alt']); ?>" />
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
-        <div class="abtImg">
-            <div class="imgArea">
-                <img src="<?php bloginfo('template_directory'); ?>/assets/media/about-brc.png" alt="About BRC">
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
 
 <!-- About section end -->
 
@@ -73,8 +104,8 @@ get_header(); ?>
     <div class="container-fluid">
         <div class="qualCont">
             <div class="qualHead secHead">
-                <h4 class="subTitle color-theme">reliable quality</h4>
-                <h2 class="mainTitle text-black mb-0">High-performance steel reinforcement through strict quality control</h2>
+                <h4 class="subTitle color-theme" data-aos="fade-up" data-aos-duration="1200">reliable quality</h4>
+                <h2 class="mainTitle text-black mb-0" data-aos="fade-up" data-aos-duration="1400">High-performance steel reinforcement through strict quality control</h2>
             </div>
         </div>
         <div class="qualDemo">
@@ -84,7 +115,7 @@ get_header(); ?>
                 </div>
                 <div class="qualInfo">
                     <div class="qualItem">
-                        <h4 class="subTitle position-relative">Vertical <br/>reinforcment</h4>
+                        <h4 class="subTitle position-relative">Vertical <br />reinforcment</h4>
                         <div class="qualDesc">
                             <p>Advanced facilities handle complex BBS accurately. Full material traceability ensures consistent performance.</p>
                         </div>
@@ -137,34 +168,34 @@ get_header(); ?>
 <section class="statsSec">
     <div class="container-fluid">
         <div class="row justify-content-between flxdir_col_mob">
-            <div class="col-1 offset-lg-1 col-12">
-                <div class="secHead">
-                    <h2 class="mainTitle text-black mb-0">Built on scale. Backed by experience.</h2>
-                    <div class="desc">
-                        <p>Odio ipsum dignissim imperdiet morbi quisque consectetur leo sodales nullam. Viverra et egestas molestie maecenas ut vel etiam.</p>
+            <?php if (have_rows('_hm_stats_head')) : ?>
+                <?php while (have_rows('_hm_stats_head')) : the_row(); ?>
+                    <?php if (get_sub_field('_hm_stats_sec_title') || get_sub_field('_hm_stats_sec_desc')): ?>
+                        <div class="col-1 offset-lg-1 col-12">
+                            <div class="secHead">
+                                <h2 class="mainTitle text-black mb-0" data-aos="fade-up" data-aos-duration="1200"><?php the_sub_field('_hm_stats_sec_title'); ?></h2>
+                                <div class="desc" data-aos="fade-up" data-aos-duration="1400">
+                                    <p><?php the_sub_field('_hm_stats_sec_desc'); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endwhile; ?>
+            <?php endif; ?>
+            <?php if (have_rows('_hm_stats_list')) : ?>
+                <div class="col-2 col-12">
+                    <div class="statsList">
+                        <div class="statsList">
+                            <?php while (have_rows('_hm_stats_list')) : the_row(); ?>
+                                <div class="statItem" data-aos="fade-up" data-aos-duration="1200">
+                                    <h4 class="color-theme"><?php the_sub_field('_hm_stats_value'); ?></h4>
+                                    <p class="text-black"><?php the_sub_field('_hm_stats_label'); ?></p>
+                                </div>
+                            <?php endwhile; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-2 col-12">
-                <div class="statsList">
-                    <div class="statItem">
-                        <h4 class="color-theme">28+ years</h4>
-                        <p class="text-black">Industry experience</p>
-                    </div>
-                    <div class="statItem">
-                        <h4 class="color-theme">30,000m<sup>2</sup></h4>
-                        <p class="text-black">Industrial area</p>
-                    </div>
-                    <div class="statItem">
-                        <h4 class="color-theme">16,000m<sup>2</sup></h4>
-                        <p class="text-black">Build-up production facility</p>
-                    </div>
-                    <div class="statItem">
-                        <h4 class="color-theme">ISO 9001:2015</h4>
-                        <p class="text-black">Certified Quality Management</p>
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
@@ -173,196 +204,166 @@ get_header(); ?>
 
 <!-- Products section start -->
 
-<section class="prodsSec">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="secHead flexHead">
-                <h2 class="mainTitle text-black mb-0">Products & solutions</h2>
-                <div class="flexNavItem ctaBtn">
-                    <a href="#" class="text-black">view all BRC products</a>
+<?php $prodargs = array(
+    'post_type'      => 'product',
+    'posts_per_page' => 4,
+);
+$prod_query = new WP_Query($prodargs);
+
+if ($prod_query->have_posts()) : ?>
+    <section class="prodsSec">
+        <div class="container-fluid">
+            <?php if (get_field('_hm_prod_sec_title') || get_field('_hm_prod_btn_link')): ?>
+                <div class="row">
+                    <div class="secHead flexHead">
+                        <h2 class="mainTitle text-black mb-0" data-aos="fade-up" data-aos-duration="1200"><?php the_field('_hm_prod_sec_title'); ?></h2>
+                        <?php $_hm_prod_btn_link = get_field('_hm_prod_btn_link'); ?>
+                        <?php if ($_hm_prod_btn_link) : ?>
+                            <div class="flexNavItem ctaBtn" data-aos="fade-up" data-aos-duration="1300">
+                                <a href="<?php echo esc_url($_hm_prod_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_prod_btn_link['target']); ?>" class="text-black">
+                                    <?php the_field('_hm_prod_btn_txt'); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="row">
+                <div class="prodsList">
+                    <?php while ($prod_query->have_posts()) : $prod_query->the_post(); ?>
+                        <div class="prodItem" data-aos="fade-up" data-aos-duration="1200">
+                            <?php if (has_post_thumbnail()): ?>
+                                <div class="prodImg">
+                                    <a href="<?php the_permalink(); ?>" class="linkInherit">
+                                        <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <div class="prodInfo">
+                                <p><a href="<?php the_permalink(); ?>" class="linkInherit"><?php the_title(); ?></a></p>
+                            </div>
+                        </div>
+                    <?php endwhile;
+                    wp_reset_postdata(); ?>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="prodsList">
-                <div class="prodItem">
-                    <div class="prodImg">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/cut_bent_steel_rebar.png" alt="">
-                    </div>
-                    <div class="prodInfo">
-                        <p>Cut & bent steel rebar</p>
-                    </div>
-                </div>
-                <div class="prodItem">
-                    <div class="prodImg">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/welded_wire_mesh.png" alt="">
-                    </div>
-                    <div class="prodInfo">
-                        <p>Welded wire mesh</p>
-                    </div>
-                </div>
-                <div class="prodItem">
-                    <div class="prodImg">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/cold_drawn_rolled_steel.png" alt="">
-                    </div>
-                    <div class="prodInfo">
-                        <p>Cold drawn/rolled steel</p>
-                    </div>
-                </div>
-                <div class="prodItem">
-                    <div class="prodImg">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/engineering_services.png" alt="">
-                    </div>
-                    <div class="prodInfo">
-                        <p>Engineering services</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
 
 <!-- Products section end -->
 
 <!-- Projects section start -->
 
-<section class="projSec">
-    <div class="container-fluid">
-        <div class="projGrid">
-            <div class="projHead projGridItem">
-                <div class="titleArea">
-                    <h3 class="mainTitle">Landmark projects across the region</h3>
-                </div>
-                <div class="ctaBtn">
-                    <a href="#" class="">view all brc projects</a>
-                </div>
-            </div>
-            <div class="projItem projGridItem">
-                <div class="projImg">
-                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/dubai_metro.png" alt="">
-                </div>
-                <div class="projInfo">
-                    <p class="text-white">Dubai metro</p>
-                </div>
-            </div>
-            <div class="projItem projGridItem">
-                <div class="projImg">
-                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/etihad_rail.png" alt="">
-                </div>
-                <div class="projInfo">
-                    <p class="text-white">etihad rail</p>
-                </div>
-            </div>
-            <div class="projItem projGridItem">
-                <div class="projImg">
-                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/yas_marina_formula.png" alt="">
-                </div>
-                <div class="projInfo">
-                    <p class="text-white">yas marina formula 1</p>
-                </div>
-            </div>
-            <div class="projItem projGridItem">
-                <div class="projImg">
-                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/dubai_maktoum_airport.png" alt="">
-                </div>
-                <div class="projInfo">
-                    <p class="text-white">Dubai Maktoum airport</p>
-                </div>
-            </div>
-            <div class="projItem projGridItem">
-                <div class="projImg">
-                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/ruwais_refinery_expansion_project.png" alt="">
-                </div>
-                <div class="projInfo">
-                    <p class="text-white">Ruwais Refinery Expansion Project</p>
-                </div>
-            </div>
-            <div class="projItem projGridItem">
-                <div class="projImg">
-                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/saadiyat_beach_villas.png" alt="">
-                </div>
-                <div class="projInfo">
-                    <p class="text-white">Saadiyat Beach Villas, Abu Dhabi</p>
-                </div>
+<?php $projargs = array(
+    'post_type'      => 'project',
+    'posts_per_page' => 6,
+);
+$proj_query = new WP_Query($projargs);
+
+if ($proj_query->have_posts()) : ?>
+    <section class="projSec">
+        <div class="container-fluid">
+            <div class="projGrid">
+                <?php if (get_field('_hm_proj_sec_title') || get_field('_hm_proj_btn_link')): ?>
+                    <div class="projHead projGridItem">
+                        <div class="titleArea">
+                            <h3 class="mainTitle" data-aos="fade-up" data-aos-duration="1200"><?php the_field('_hm_proj_sec_title'); ?></h3>
+                        </div>
+                        <?php $_hm_proj_btn_link = get_field('_hm_proj_btn_link'); ?>
+                        <?php if ($_hm_proj_btn_link) : ?>
+                            <div class="ctaBtn" data-aos="fade-up" data-aos-duration="1400">
+                                <a href="<?php echo esc_url($_hm_proj_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_proj_btn_link['target']); ?>">
+                                    <?php the_field('_hm_proj_btn_txt'); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+                <?php while ($proj_query->have_posts()) : $proj_query->the_post(); ?>
+                    <div class="projItem projGridItem" data-aos="fade-up" data-aos-duration="1300">
+                        <?php if (has_post_thumbnail()): ?>
+                            <div class="projImg">
+                                <a href="<?php the_permalink(); ?>">
+                                    <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                        <div class="projInfo">
+                            <p class="text-white">
+                                <a href="<?php the_permalink(); ?>" class="linkInherit hover_white"><?php the_title(); ?></a>
+                            </p>
+                        </div>
+                    </div>
+                <?php endwhile;
+                wp_reset_postdata(); ?>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
 
 <!-- Projects section end -->
 
 <!-- News section start -->
 
-<section class="newsSec">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="secHead flexHead">
-                <h2 class="mainTitle text-black mb-0">News & insights</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-12">
-                <div class="newsItem">
-                    <div class="newsImg">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/news_card_1.png" alt="">
-                    </div>
-                    <div class="newsInfo">
-                        <div class="titleArea">
-                            <h4>Tortor pellentesque nec in vitae convallis nibh</h4>
-                        </div>
-                        <div class="desc">
-                            <p>Aliquet cursus quam eget cras sed nibh enim. Consectetur pulvinar morbi pharetra senectus ac sed neque orci augue. Orci ut tellus id netus. A quam cras enim vulputate...</p>
-                        </div>
-                        <div class="readMore">
-                            <a href="#">Read</a>
-                        </div>
+<?php $newsargs = array(
+    'post_type'      => 'post',
+    'posts_per_page' => 3,
+);
+$news_query = new WP_Query($newsargs);
+
+if ($news_query->have_posts()) : ?>
+    <section class="newsSec">
+        <div class="container-fluid">
+            <?php if (get_field('_hm_news_sec_title')): ?>
+                <div class="row">
+                    <div class="secHead flexHead" data-aos="fade-up" data-aos-duration="1200">
+                        <h2 class="mainTitle text-black mb-0"><?php the_field('_hm_news_sec_title'); ?></h2>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-12">
-                <div class="newsItem">
-                    <div class="newsImg">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/news_card_2.png" alt="">
+            <?php endif; ?>
+            <div class="row">
+                <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
+                    <div class="col-lg-4 col-12" data-aos="fade-up" data-aos-duration="1300">
+                        <div class="newsItem">
+                            <?php if (has_post_thumbnail()): ?>
+                                <div class="newsImg">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <div class="newsInfo">
+                                <div class="titleArea">
+                                    <h4>
+                                        <a href="<?php the_permalink(); ?>" class="linkInherit hover_white"><?php the_title(); ?></a>
+                                    </h4>
+                                </div>
+                                <div class="desc">
+                                    <?php the_excerpt(); ?>
+                                </div>
+                                <div class="readMore">
+                                    <a href="<?php the_permalink(); ?>">Read</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="newsInfo">
-                        <div class="titleArea">
-                            <h4>Tortor pellentesque nec in vitae convallis nibh</h4>
-                        </div>
-                        <div class="desc">
-                            <p>Aliquet cursus quam eget cras sed nibh enim. Consectetur pulvinar morbi pharetra senectus ac sed neque orci augue. Orci ut tellus id netus. A quam cras enim vulputate...</p>
-                        </div>
-                        <div class="readMore">
-                            <a href="#">Read</a>
-                        </div>
+                <?php endwhile;
+                wp_reset_postdata(); ?>
+            </div>
+            <?php $_hm_news_btn_link = get_field('_hm_news_btn_link'); ?>
+            <?php if ($_hm_news_btn_link) : ?>
+                <div class="row justify-content-end viewAllNews">
+                    <div class="flexNavItem ctaBtn maxCont" data-aos="fade-up" data-aos-duration="1200">
+                        <a href="<?php echo esc_url($_hm_news_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_news_btn_link['target']); ?>" class="color-theme">
+                            <?php the_field('_hm_news_btn_txt'); ?>
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-12">
-                <div class="newsItem">
-                    <div class="newsImg">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/news_card_3.png" alt="">
-                    </div>
-                    <div class="newsInfo">
-                        <div class="titleArea">
-                            <h4>Tortor pellentesque nec in vitae convallis nibh</h4>
-                        </div>
-                        <div class="desc">
-                            <p>Aliquet cursus quam eget cras sed nibh enim. Consectetur pulvinar morbi pharetra senectus ac sed neque orci augue. Orci ut tellus id netus. A quam cras enim vulputate...</p>
-                        </div>
-                        <div class="readMore">
-                            <a href="#">Read</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
-        <div class="row justify-content-end viewAllNews">
-            <div class="flexNavItem ctaBtn maxCont">
-                <a href="#" class="color-theme">view all news</a>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
 
 <!-- News section end -->
 

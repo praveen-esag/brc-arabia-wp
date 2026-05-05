@@ -156,7 +156,8 @@ function brc_arabia_scripts()
 	wp_enqueue_style('aos', get_template_directory_uri() . '/assets/css/aos.css', array(), '1.0');
 	wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '1.0', 'all');
 	wp_enqueue_style('swiper', get_template_directory_uri() . '/assets/vendor/swiper/swiper.min.css', array(), '1.0', 'all');
-	wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/brs4cod.css', array(), null);
+	// wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/brs4cod.css', array(), null);
+	wp_enqueue_style('adobe-fonts-alt', 'https://use.typekit.net/brs4cod.css', array(), null);
 
 	// jQuery
 	wp_enqueue_script('jquery');
@@ -167,6 +168,9 @@ function brc_arabia_scripts()
 	wp_enqueue_script('gsap', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', [], null, true);
 	wp_enqueue_script('ScrollTrigger', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', [], null, true);
 	wp_enqueue_script('custom', get_template_directory_uri() . '/assets/js/custom.js', [], '1.0', true);
+
+	// Mobile responsive stylesheet — loaded last to override everything
+	wp_enqueue_style('responsive', get_template_directory_uri() . '/assets/css/responsive.css?ver1.0', ['custom', 'bootstrap'], '1.0');
 }
 add_action('wp_enqueue_scripts', 'brc_arabia_scripts');
 
@@ -197,16 +201,20 @@ if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-if ( function_exists( 'acf_add_options_page' ) ) {
+if (function_exists('acf_add_options_page')) {
 
-	acf_add_options_page( array(
+	$themesetparent = acf_add_options_page(array(
 		'page_title'	=> 'Theme Options',
 		'menu_title'	=> 'Theme Options',
 		'menu_slug' 	=> 'acf-theme-options',
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false,
 	));
-
+	acf_add_options_sub_page(array(
+		'page_title'    => __('Header'),
+		'menu_title'    => __('Header'),
+		'parent_slug'   => $themesetparent['menu_slug'],
+	));
 }
 
 /**
@@ -239,22 +247,46 @@ add_filter('wpcf7_form_autocomplete', function ($autocomplete) {
 	return $autocomplete;
 }, 10, 1);
 
-add_action('admin_head', function () {
-    echo '<style>
-    .acf-field[data-name="cells"] .acf-table tbody tr {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .acf-field[data-name="cells"] .acf-table tbody tr td {
-        width: 20% !important; /* 5 per row */
-        box-sizing: border-box;
-    }
-    .acf-field[data-name="cells"] .acf-input {
-        padding: 4px;
-    }
-    .acf-field[data-name="cells"] input {
-        width: 100%;
-    }
+// add_action('admin_head', function () {
+//     echo '<style>
+//     .acf-field[data-name="cells"] .acf-table tbody tr {
+//         display: flex;
+//         flex-wrap: wrap;
+//     }
+//     .acf-field[data-name="cells"] .acf-table tbody tr td {
+//         width: 20% !important; /* 5 per row */
+//         box-sizing: border-box;
+//     }
+//     .acf-field[data-name="cells"] .acf-input {
+//         padding: 4px;
+//     }
+//     .acf-field[data-name="cells"] input {
+//         width: 100%;
+//     }
 
-    </style>';
-});
+//     </style>';
+// });
+
+add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $args) {
+
+	// 👇 target only this menu
+	if ($args->menu !== 'Main Menu Left') {
+		return $item_output;
+	}
+
+	if ($item->object === 'product') {
+
+		$img  = get_the_post_thumbnail_url($item->object_id, 'medium');
+		$link = get_permalink($item->object_id);
+
+		if ($img) {
+			$item_output = str_replace(
+				'<a',
+				'<a class="has-preview" data-img="' . $img . '" data-link="' . $link . '"',
+				$item_output
+			);
+		}
+	}
+
+	return $item_output;
+}, 10, 4);

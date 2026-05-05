@@ -11,20 +11,6 @@
 get_header(); ?>
 
 <!-- Banner section start -->
-<section class="bannerSec contBannerSec d-none">
-    <div class="container-fluid">
-        <div class="row justify-content-between">
-            <div class="col-lg-12 col-12">
-                <div class="projBanInfo secHead position-relative">
-                    <div class="titleArea">
-                        <h4 class="subTitle text-white">Contact us</h4>
-                        <h1 class="xlTitle text-white mb-0">Get in touch with us</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="contHeadSec">
     <div class="container-fluid">
@@ -32,21 +18,21 @@ get_header(); ?>
             <div class="infoCol col-12">
                 <div class="secHead">
                     <div class="titleArea">
-                        <h4 class="subTitle text-white"><?php the_field('_cont_ban_sec_subtitle'); ?></h4>
-                        <h1 class="xlTitle text-white mb-0"><?php the_field('_cont_ban_sec_title'); ?></h1>
+                        <h4 class="subTitle text-white" data-aos="fade-up" data-aos-duration="1200"><?php the_field('_cont_ban_sec_subtitle'); ?></h4>
+                        <h1 class="xlTitle text-white mb-0" data-aos="fade-up" data-aos-duration="1400"><?php the_field('_cont_ban_sec_title'); ?></h1>
                     </div>
                 </div>
                 <?php if (have_rows('office_info', 'option')) : ?>
                     <div class="addrsInfo">
                         <?php while (have_rows('office_info', 'option')) : the_row(); ?>
                             <div class="adrsBox">
-                                <h4 class="subTitle text-white"><?php the_sub_field('_office_name'); ?></h4>
-                                <div class="desc adrs">
+                                <h4 class="subTitle text-white" data-aos="fade-up" data-aos-duration="1200"><?php the_sub_field('_office_name'); ?></h4>
+                                <div class="desc adrs" data-aos="fade-up" data-aos-duration="1400">
                                     <p class="mb-0"><?php the_sub_field('_office_address'); ?>
-                                        <a href="#">Get direction</a>
+                                        <a href="<?php the_sub_field('_direction_link'); ?>" target="_blank">Get direction</a>
                                     </p>
                                 </div>
-                                <div class="desc phone">
+                                <div class="desc phone" data-aos="fade-up" data-aos-duration="1600">
                                     <?php if (have_rows('_office_phone')) : ?>
                                         <?php while (have_rows('_office_phone')) : the_row(); ?>
                                             <p class="mb-0"><a href="tel:<?php esc_attr(the_sub_field('_phone_number')); ?>"><?php the_sub_field('_phone_number'); ?></a></p>
@@ -73,11 +59,11 @@ get_header(); ?>
             </div>
             <div class="formVidCol col-12">
                 <div class="contFormArea flxdir_col_mob">
-                    <div class="formCol formWhite">
+                    <div class="formCol formWhite" data-aos="fade-up" data-aos-duration="1200">
                         <?php echo do_shortcode('[contact-form-7 id="3e5fbd3" title="Contact Page Form"]'); ?>
                     </div>
                     <?php if (get_field('_cont_ban_sec_vid')) : ?>
-                        <div class="vidArea">
+                        <div class="vidArea" data-aos="fade-up" data-aos-duration="1500">
                             <?php $contvidposter = get_field('_cont_ban_sec_vidthumb');
                             $contvid = get_field('_cont_ban_sec_vid'); ?>
                             <video class="abtVideo" autoplay="" muted="" loop="false" playsinline="" poster="<?php echo esc_url($contvidposter); ?>">
@@ -96,22 +82,22 @@ get_header(); ?>
 <!-- Banner section end -->
 
 <!-- Resources section start -->
-<?php if (get_field('_res_sec_title') || have_rows('_resources_list')): ?>
+<?php if (get_field('_cont_res_sec_title') || have_rows('_cont_resources_list')): ?>
     <section class="resourceSec">
         <div class="resBanImg">
-            <?php if (get_field('_res_sec_bg')) : ?>
+            <?php if (get_field('_cont_res_sec_bg')) : ?>
                 <div class="imgArea">
-                    <img src="<?php the_field('_res_sec_bg'); ?>" alt="">
+                    <img src="<?php the_field('_cont_res_sec_bg'); ?>" alt="Resources section">
                 </div>
             <?php endif ?>
         </div>
         <div class="container-theme resCont">
             <div class="secHead position-relative">
-                <h2 class="xlTitle text-white"><?php the_field('_res_sec_title'); ?></h2>
+                <h2 class="xlTitle text-white" data-aos="fade-up" data-aos-duration="1200"><?php the_field('_cont_res_sec_title'); ?></h2>
                 <div class="ctaArea flexNav">
-                    <?php while (have_rows('_resources_list')) : the_row(); ?>
-                        <div class="ctaBtn">
-                            <a href="<?php the_sub_field('_resource_file'); ?>" class="btn_yellow"><?php the_sub_field('_resourse_name'); ?></a>
+                    <?php while (have_rows('_cont_resources_list')) : the_row(); ?>
+                        <div class="ctaBtn" data-aos="fade-up" data-aos-duration="1400">
+                            <a href="<?php the_sub_field('_cont_resource_file'); ?>" class="btn_yellow"><?php the_sub_field('_cont_resourse_name'); ?></a>
                         </div>
                     <?php endwhile; ?>
                     <!-- <div class="ctaBtn">
@@ -132,35 +118,7 @@ get_header(); ?>
 
 <section class="seemoreSec borderTop">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-12 p-0">
-                <div class="seemoreLinks position-relative">
-                    <div class="seemoreLink">
-                        <div class="ctaArea">
-                            <h4 class="subTitle color-theme">See more</h4>
-                            <a href="#" class="text-black">About BRC Arabia</a>
-                        </div>
-                    </div>
-                    <div class="seemoreLink">
-                        <div class="ctaArea">
-                            <a href="#" class="text-black">QHSE</a>
-                        </div>
-                    </div>
-                    <div class="seemoreLink">
-                        <div class="ctaArea">
-                            <a href="#" class="text-black">Engineering service</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-12 p-0">
-                <div class="seemoreImgArea">
-                    <div class="imgArea">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/seemore_bg.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php get_template_part('template-parts/sections/seemore-section'); ?>
     </div>
 </section>
 

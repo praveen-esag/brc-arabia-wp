@@ -37,10 +37,16 @@
 			<div class="container-fluid">
 				<div class="headerInner">
 					<div class="navWrap navLeft">
-						<nav id="site-navigation" class="main-navigation mainNav">
+						<nav id="site-navigation" class="main-navigation mainNav leftNav">
 							<?php wp_nav_menu([
 								'menu' => 'Main Menu Left'
 							]); ?>
+							<div class="menu-preview">
+								<a href="#" class="btn">
+									<img src="" alt="">
+								</a>
+								<a href="#" class="btn knowmore_btn">Know More</a>
+							</div>
 						</nav>
 					</div>
 					<div class="logo_area logo">
@@ -49,7 +55,7 @@
 							?>
 							<?php if (is_front_page()) { ?>
 								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo.svg" alt="BRC Logo">
-							<?php } elseif (is_page_template('template-parts/content-contact.php')) { ?>
+							<?php } elseif (is_page_template('template-parts/content-contact.php') || is_404()) { ?>
 								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_white.svg" alt="BRC Logo">
 							<?PHP } else { ?>
 								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo">

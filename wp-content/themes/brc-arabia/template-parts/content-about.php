@@ -12,38 +12,44 @@ get_header(); ?>
 
 <!-- Banner section start -->
 <div class="sticky_wrapper position-relative">
-    <section class="bannerSec innerBanner abtBannerSec">
-        <div class="container-fluid">
-            <div class="row justify-content-between">
-                <div class="col-lg-5">
-                    <div class="bannerTitleArea">
-                        <div class="secHead">
-                            <h4 class="subTitle color-theme text-capitalize">About BRC Arabia</h4>
-                            <h1 class="xlTitle text-black mb-0">Reinforcing the foundations of progress</h1>
+    <?php if (get_field('_abt_ban_subtitle') || get_field('_abt_ban_title') || get_field('_about_ban_video') || get_field('_abt_ban_desc')): ?>
+        <section class="bannerSec innerBanner abtBannerSec">
+            <div class="container-fluid">
+                <div class="row justify-content-between">
+                    <div class="col-lg-5">
+                        <div class="bannerTitleArea">
+                            <div class="secHead">
+                                <h4 class="subTitle color-theme text-capitalize" data-aos="fade-up" data-aos-duration="1200"><?php the_field('_abt_ban_subtitle'); ?></h4>
+                                <h1 class="xlTitle text-black mb-0" data-aos="fade-up" data-aos-duration="1400"><?php the_field('_abt_ban_title'); ?></h1>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="bannerImgArea">
-                        <!-- <div class="imgArea">
+                    <div class="col-lg-5">
+                        <div class="bannerImgArea">
+                            <!-- <div class="imgArea">
                         <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/about_banner_image.png" alt="About BRC">
                     </div> -->
-                        <div class="vidArea">
-                            <?php $abtvidposter = get_stylesheet_directory_uri() . '/assets/media/about/about_banner_image.png'; ?>
-                            <video class="abtVideo" autoplay="" muted="" loop="false" playsinline="" poster="<?php echo esc_url($abtvidposter); ?>">
-                                <source src="<?php bloginfo('template_directory'); ?>/assets/media/about/about_banner_video.mp4" type="video/mp4">
-                                <source src="<?php bloginfo('template_directory'); ?>/assets/media/about/about_banner_video.mp4" type="video/ogg">
-                                No video support.
-                            </video>
-                        </div>
-                        <div class="desc">
-                            <p class="subTitle mb-0">Delivering precision steel reinforcement solutions across the UAE and Gulf region with certified quality, advanced facilities, and decades of expertise.</p>
+                            <?php if (get_field('_about_ban_video')) : ?>
+                                <div class="vidArea" data-aos="fade-up" data-aos-duration="1200">
+                                    <?php $abtvidposter = get_field('_abt_ban_vid_thumb'); ?>
+                                    <video class="abtVideo" autoplay="" muted="" loop="false" playsinline="" poster="<?php echo esc_url($abtvidposter); ?>">
+                                        <source src="<?php the_field('_about_ban_video'); ?>" type="video/mp4">
+                                        <source src="<?php the_field('_about_ban_video'); ?>" type="video/ogg">
+                                        No video support.
+                                    </video>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (get_field('_abt_ban_desc')): ?>
+                                <div class="desc" data-aos="fade-up" data-aos-duration="1800">
+                                    <p class="subTitle mb-0"><?php the_field('_abt_ban_desc'); ?></p>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    <?php endif; ?>
 
     <!-- Banner section end -->
 
@@ -51,42 +57,69 @@ get_header(); ?>
 
     <section class="ourStory">
         <div class="container-fluid p-0">
-            <div class="abtMainImg position-relative">
-                <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/brc_building.png" alt="">
-            </div>
-            <div class="abtstorySec primary_bg flxdir_col_mob">
-                <div class="storycontArea mw-100-mob">
-                    <div class="vertLine" data-aos="fade-left" data-aos-duration="2000"></div>
-                    <div class="secHead">
-                        <h4 class="subTitle text-white mb-3">our story</h4>
-                        <h1 class="mainTitle text-white mb-0" data-aos="fade-up" data-aos-duration="2000">Since 1997, the company has delivered high quality steel reinforcement solutions across the UAE and Gulf.</h1>
-                    </div>
-                    <div class="desc" data-aos="fade-up" data-aos-duration="2000">
-                        <p class="mb-0 text-white">BRC Arabia began operations at Sharjah Airport Free Zone before elevating its presence with a purpose built facility in Dubai Industrial Park in 2011, alongside the launch of its Abu Dhabi branch.</p>
-                    </div>
-                    <div class="horzLine" data-aos="fade-up" data-aos-duration="2000"></div>
+            <?php $_story_sec_img_ = get_field('_story_sec_img_'); ?>
+            <?php if ($_story_sec_img_) : ?>
+                <div class="abtMainImg position-relative">
+                    <img src="<?php echo esc_url($_story_sec_img_['url']); ?>" alt="<?php echo esc_attr($_story_sec_img_['alt']); ?>" />
                 </div>
-                <div class="storyImgArea mw-100-mob">
-                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/brc_story.png" alt="">
-                </div>
-            </div>
-            <div class="abtgrpSec abtstorySec1 primary_bg flxdir_col_mob">
-                <div class="horzLine" data-aos="fade-up" data-aos-duration="2000"></div>
-                <div class="storyImgArea grpImgArea position-relative mw-100-mob">
-                    <div class="vertLine" data-aos="fade-left" data-aos-duration="2000"></div>
-                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/about_algurg.png" alt="">
-                </div>
-                <div class="storycontArea mw-100-mob">
-                    <div class="secHead">
-                        <h4 class="subTitle text-white mb-3" data-aos="fade-up" data-aos-duration="1800">Al gurg group</h4>
-                        <h1 class="mainTitle text-white mb-0" data-aos="fade-up" data-aos-duration="2000">Since 1960, Al Gurg Group is one of the UAE’s eminent family businesses, comprising over 30 companies.</h1>
-                        <div class="maxCont ctaBtn" data-aos="fade-up" data-aos-duration="2200"><a href="#" class="text-white">Know more</a></div>
-                    </div>
-                    <!-- <div class="desc">
-                    <p class="mb-0 text-white">BRC Arabia began operations at Sharjah Airport Free Zone before elevating its presence with a purpose built facility in Dubai Industrial Park in 2011, alongside the launch of its Abu Dhabi branch.</p>
-                </div> -->
-                </div>
-            </div>
+            <?php endif; ?>
+            <?php if (have_rows('_our_story_cont_area')) : ?>
+                <?php while (have_rows('_our_story_cont_area')) : the_row(); ?>
+                    <?php if (get_sub_field('_story_cont_subtitle') || get_sub_field('_story_cont_title') || get_sub_field('_story_cont_desc') || get_sub_field('_story_cont_img')): ?>
+                        <div id="brc-story" class="abtstorySec primary_bg flxdir_col_mob">
+                            <div class="storycontArea mw-100-mob">
+                                <div class="vertLine" data-aos="fade-left" data-aos-duration="2000"></div>
+                                <div class="secHead">
+                                    <h4 class="subTitle text-white mb-3"><?php the_sub_field('_story_cont_subtitle'); ?></h4>
+                                    <h1 class="mainTitle text-white mb-0" data-aos="fade-up" data-aos-duration="2000">
+                                        <?php the_sub_field('_story_cont_title'); ?>
+                                    </h1>
+                                </div>
+                                <div class="desc" data-aos="fade-up" data-aos-duration="2000">
+                                    <p class="mb-0 text-white"><?php the_sub_field('_story_cont_desc'); ?></p>
+                                </div>
+                                <div class="horzLine" data-aos="fade-up" data-aos-duration="2000"></div>
+                            </div>
+                            <?php $_story_cont_img = get_sub_field('_story_cont_img'); ?>
+                            <?php if ($_story_cont_img) : ?>
+                                <div class="storyImgArea mw-100-mob">
+                                    <img src="<?php echo esc_url($_story_cont_img['url']); ?>" alt="<?php echo esc_attr($_story_cont_img['alt']); ?>" />
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                <?php endwhile; ?>
+            <?php endif; ?>
+            <?php if (have_rows('_grp_info_area')) : ?>
+                <?php while (have_rows('_grp_info_area')) : the_row(); ?>
+                    <?php if (get_sub_field('_grp_cont_subtitle') || get_sub_field('_grp_cont_title') || get_sub_field('_grp_info_btn_link') || get_sub_field('_grp_cont_img')): ?>
+                        <div id="algurg-group" class="abtgrpSec abtstorySec1 primary_bg flxdir_col_mob">
+                            <div class="horzLine" data-aos="fade-up" data-aos-duration="2000"></div>
+                            <?php $_grp_cont_img = get_sub_field('_grp_cont_img'); ?>
+                            <?php if ($_grp_cont_img) : ?>
+                                <div class="storyImgArea grpImgArea position-relative mw-100-mob">
+                                    <div class="vertLine" data-aos="fade-left" data-aos-duration="2000"></div>
+                                    <img src="<?php echo esc_url($_grp_cont_img['url']); ?>" alt="<?php echo esc_attr($_grp_cont_img['alt']); ?>" />
+                                </div>
+                            <?php endif; ?>
+                            <div class="storycontArea mw-100-mob">
+                                <div class="secHead">
+                                    <h4 class="subTitle text-white mb-3" data-aos="fade-up" data-aos-duration="1800"><?php the_sub_field('_grp_cont_subtitle'); ?></h4>
+                                    <h1 class="mainTitle text-white mb-0" data-aos="fade-up" data-aos-duration="2000"><?php the_sub_field('_grp_cont_title'); ?></h1>
+                                    <?php $_grp_info_btn_link = get_sub_field('_grp_info_btn_link'); ?>
+                                    <?php if ($_grp_info_btn_link) : ?>
+                                        <div class="maxCont ctaBtn" data-aos="fade-up" data-aos-duration="2200">
+                                            <a href="<?php echo esc_url($_grp_info_btn_link['url']); ?>" target="<?php echo esc_attr($_grp_info_btn_link['target']); ?>" class="text-white">
+                                                <?php the_sub_field('_grp_info_btntxt'); ?>
+                                            </a>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endwhile; ?>
+            <?php endif; ?>
         </div>
     </section>
 </div>
@@ -94,96 +127,56 @@ get_header(); ?>
 <!-- Our story section end -->
 
 <!-- Stats section start -->
-
-<section class="statsSec abtStatSec">
-    <div class="container-theme">
-        <div class="row justify-content-between flxdir_col_mob statsRow">
-            <div class="col-lg-7 col-12">
-                <div class="statsList">
-                    <div class="statItem">
-                        <h4 class="color-theme">28+ years</h4>
-                        <p class="text-black">Industry experience</p>
+<?php if (have_rows('_statistics_list') || have_rows('_industries_list')) : ?>
+    <section class="statsSec abtStatSec">
+        <div class="container-theme">
+            <?php if (have_rows('_statistics_list') || get_field('_stat_sec_title') || get_field('_stat_sec_desc')) : ?>
+                <div class="row justify-content-between flxdir_col_mob statsRow">
+                    <div class="col-lg-7 col-12">
+                        <div class="statsList">
+                            <?php while (have_rows('_statistics_list')) : the_row(); ?>
+                                <div class="statItem" data-aos="fade-up" data-aos-duration="1200">
+                                    <h4 class="color-theme"><?php the_sub_field('_stat_value'); ?></h4>
+                                    <p class="text-black"><?php the_sub_field('_stat_label'); ?></p>
+                                </div>
+                            <?php endwhile; ?>
+                        </div>
                     </div>
-                    <div class="statItem">
-                        <h4 class="color-theme">30,000m<sup>2</sup></h4>
-                        <p class="text-black">Industrial area</p>
-                    </div>
-                    <div class="statItem">
-                        <h4 class="color-theme">16,000m<sup>2</sup></h4>
-                        <p class="text-black">Build-up production facility</p>
-                    </div>
-                    <div class="statItem">
-                        <h4 class="color-theme">ISO 9001:2015</h4>
-                        <p class="text-black">Certified Quality Management</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-12">
-                <div class="secHead">
-                    <h2 class="mainTitle text-black mb-0">Built on scale. Backed by experience.</h2>
-                    <div class="desc">
-                        <p>Since 1997, BRC Arabia has supplied precision-engineered steel reinforcement to some of the region's most demanding construction projects. Our world-class facility in Dubai Industrial Park combines advanced production technology with decades of accumulated expertise, enabling us to deliver consistently, at scale, without compromise.</p>
+                    <div class="col-lg-4 col-12">
+                        <div class="secHead">
+                            <h2 class="mainTitle text-black mb-0" data-aos="fade-up" data-aos-duration="1200"><?php the_field('_stat_sec_title'); ?></h2>
+                            <div class="desc" data-aos="fade-up" data-aos-duration="1400">
+                                <p><?php the_field('_stat_sec_desc'); ?></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
+            <?php if (have_rows('_industries_list')) : ?>
+                <div id="sectors" class="row keyIndusRow">
+                    <div class="secHead" data-aos="fade-up" data-aos-duration="1200">
+                        <h2 class="mainTitle text-black mb-0"><?php the_field('_indus_sec_title'); ?></h2>
+                    </div>
+                    <div class="indusList flexHead flxdir_col_mob">
+                        <?php while (have_rows('_industries_list')) : the_row(); ?>
+                            <div class="indusItem" data-aos="fade-up" data-aos-duration="1200">
+                                <?php $_indus_img = get_sub_field('_indus_img'); ?>
+                                <?php if ($_indus_img) : ?>
+                                    <div class="imgArea">
+                                        <img src="<?php echo esc_url($_indus_img['url']); ?>" alt="<?php echo esc_attr($_indus_img['alt']); ?>" />
+                                    </div>
+                                <?php endif; ?>
+                                <div class="titleArea">
+                                    <h4 class="indusTitle text-center"><?php the_sub_field('_indus_title'); ?></h4>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
-        <div class="row keyIndusRow">
-            <div class="secHead">
-                <h2 class="mainTitle text-black mb-0">Delivering across<br /> key industries</h2>
-            </div>
-            <div class="indusList flexHead flxdir_col_mob">
-                <div class="indusItem">
-                    <div class="imgArea">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/infrastructure_icon.gif" alt="">
-                    </div>
-                    <div class="titleArea">
-                        <h4 class="indusTitle text-center">Infrastructure</h4>
-                    </div>
-                </div>
-                <div class="indusItem">
-                    <div class="imgArea">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/infrastructure_icon.gif" alt="">
-                    </div>
-                    <div class="titleArea">
-                        <h4 class="indusTitle text-center">Power <br />plants</h4>
-                    </div>
-                </div>
-                <div class="indusItem">
-                    <div class="imgArea">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/rail.svg" alt="">
-                    </div>
-                    <div class="titleArea">
-                        <h4 class="indusTitle text-center">Rail <br />infrastructure</h4>
-                    </div>
-                </div>
-                <div class="indusItem">
-                    <div class="imgArea">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/oil_gas.gif" alt="">
-                    </div>
-                    <div class="titleArea">
-                        <h4 class="indusTitle text-center">Oil, Gas & <br />Energy</h4>
-                    </div>
-                </div>
-                <div class="indusItem">
-                    <div class="imgArea">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/commercial.gif" alt="">
-                    </div>
-                    <div class="titleArea">
-                        <h4 class="indusTitle text-center">Commercial & <br />residential towers</h4>
-                    </div>
-                </div>
-                <div class="indusItem">
-                    <div class="imgArea">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/housing.gif" alt="">
-                    </div>
-                    <div class="titleArea">
-                        <h4 class="indusTitle text-center">Housing</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
 
 <!-- Stats section end -->
 
@@ -193,37 +186,57 @@ get_header(); ?>
     <div class="container-fluid pe-0">
         <div class="vismisMain d-flex">
             <div class="vismisContArea">
-                <div class="secHead">
-                    <h4 class="subTitle color-theme mb-2">integrity, collaboration, and accountability.</h4>
-                    <div class="desc">
-                        <p class="text-black">Our experienced team delivers intelligent solutions while adapting to changing market needs, ensuring excellence through ethical practices and measurable results.</p>
-                    </div>
-                </div>
-                <div class="visCont expandCol">
-                    <div class="contCard">
-                        <h3 class="mainTitle color-theme">Our vision</h3>
+                <?php if (get_field('_vismis_sec_title') || get_field('_vismis_sec_desc')) : ?>
+                    <div class="secHead">
+                        <h4 class="subTitle color-theme mb-2"><?php the_field('_vismis_sec_title'); ?></h4>
                         <div class="desc">
-                            <p class="text-black">To be the leading reinforcing steel company in the region and beyond, driven by expertise, quality, innovation and strong ethical values.</p>
+                            <p class="text-black"><?php the_field('_vismis_sec_desc'); ?></p>
                         </div>
                     </div>
-                </div>
-                <div class="misCont expandCol">
-                    <div class="contCard">
-                        <div class="imgArea">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/brc_mission.png" alt="">
-                        </div>
-                        <h3 class="mainTitle color-theme">Our mission</h3>
-                        <div class="desc">
-                            <p class="text-black">To deliver sustainable excellence by combining skilled people, advanced facilities, and innovative engineering solutions that meet customer needs while ensuring long term value for our stakeholders.</p>
-                        </div>
+                <?php endif; ?>
+                <?php if (have_rows('_vis_cont_area')) : ?>
+                    <?php while (have_rows('_vis_cont_area')) : the_row(); ?>
+                        <?php if (get_sub_field('_vis_cont_title') || get_sub_field('_vis_cont_desc')): ?>
+                            <div class="visCont expandCol">
+                                <div class="contCard">
+                                    <h3 class="mainTitle color-theme"><?php the_sub_field('_vis_cont_title'); ?></h3>
+                                    <div class="desc">
+                                        <p class="text-black"><?php the_sub_field('_vis_cont_desc'); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+                <?php if (have_rows('_mis_cont_area')) : ?>
+                    <?php while (have_rows('_mis_cont_area')) : the_row(); ?>
+                        <?php if (get_sub_field('_mis_cont_title') || get_sub_field('_mis_cont_desc') || get_sub_field('_mis_cont_img')): ?>
+                            <div class="misCont expandCol">
+                                <div class="contCard">
+                                    <?php $_mis_cont_img = get_sub_field('_mis_cont_img'); ?>
+                                    <?php if ($_mis_cont_img) : ?>
+                                        <div class="imgArea">
+                                            <img src="<?php echo esc_url($_mis_cont_img['url']); ?>" alt="<?php echo esc_attr($_mis_cont_img['alt']); ?>" />
+                                        </div>
+                                    <?php endif; ?>
+                                    <h3 class="mainTitle color-theme"><?php the_sub_field('_mis_cont_title'); ?></h3>
+                                    <div class="desc">
+                                        <p class="text-black"><?php the_sub_field('_mis_cont_desc'); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </div>
+            <?php $_vismis_sec_col_img = get_field('_vismis_sec_col_img'); ?>
+            <?php if ($_vismis_sec_col_img) : ?>
+                <div class="vismisImgArea">
+                    <div class="imgArea">
+                        <img src="<?php echo esc_url($_vismis_sec_col_img['url']); ?>" alt="<?php echo esc_attr($_vismis_sec_col_img['alt']); ?>" />
                     </div>
                 </div>
-            </div>
-            <div class="vismisImgArea">
-                <div class="imgArea">
-                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/brc_vision_mission.png" alt="">
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
@@ -232,97 +245,44 @@ get_header(); ?>
 
 <!-- Sustainability section start -->
 
-<section class="sustainSec">
-    <div class="sustainImgArea">
-        <div class="imgArea">
-            <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/brc_sustainability.png" alt="">
-        </div>
-    </div>
-    <div class="sustainContArea container-theme">
-        <div class="secHead">
-            <h4 class="subTitle color-theme">Sustainability</h4>
-            <div class="desc">
-                <p>Steel built to endure. Practices built to last. We combine responsible sourcing, waste-reducing precision manufacturing, and long-term thinking, because lasting infrastructure demands lasting commitment.</p>
+<?php if (get_field('_sust_sec_subtitle') || get_field('_sust_sec_desc') || get_field('_sust_sec_bg')): ?>
+    <section id="sustainability" class="sustainSec">
+        <?php $_sust_sec_bg = get_field('_sust_sec_bg'); ?>
+        <?php if ($_sust_sec_bg) : ?>
+            <div class="sustainImgArea">
+                <div class="imgArea">
+                    <img src="<?php echo esc_url($_sust_sec_bg['url']); ?>" alt="<?php echo esc_attr($_sust_sec_bg['alt']); ?>" />
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="sustainContArea container-theme">
+            <div class="secHead">
+                <h4 class="subTitle color-theme" data-aos="fade-up" data-aos-duration="1200"><?php the_field('_sust_sec_subtitle'); ?></h4>
+                <div class="desc" data-aos="fade-up" data-aos-duration="1400">
+                    <p><?php the_field('_sust_sec_desc'); ?></p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
 
 <!-- Sustainability section end -->
 
 <!-- Certifications section start -->
 
-<section class="certifSec">
+<section id="certification" class="certifSec1">
     <div class="container-theme">
-        <div class="row align-items-center">
-            <div class="col-lg-4 col-12">
-                <div class="secHead">
-                    <h2 class="mainTitle">Certifications</h2>
-                </div>
-            </div>
-            <div class="col-lg-8 col-12">
-                <div class="certLogos flexHead">
-                    <div class="certLogo">
-                        <div class="imgArea">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/product_conformity.svg" alt="">
-                        </div>
-                    </div>
-                    <div class="certLogo">
-                        <div class="imgArea">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/dubai_chamber.svg" alt="">
-                        </div>
-                    </div>
-                    <div class="certLogo">
-                        <div class="imgArea">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/ministry_energy.svg" alt="">
-                        </div>
-                    </div>
-                    <div class="certLogo">
-                        <div class="imgArea">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/smg.svg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php get_template_part('template-parts/sections/certificates-section'); ?>
     </div>
 </section>
 
 <!-- Certifications section end -->
 
 <!-- Seemore section start -->
-
+ 
 <section class="seemoreSec">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-12 p-0">
-                <div class="seemoreLinks position-relative">
-                    <div class="seemoreLink">
-                        <div class="ctaArea">
-                            <h4 class="subTitle color-theme">See more</h4>
-                            <a href="#" class="text-black">Products</a>
-                        </div>
-                    </div>
-                    <div class="seemoreLink">
-                        <div class="ctaArea">
-                            <a href="#" class="text-black">Downloads</a>
-                        </div>
-                    </div>
-                    <div class="seemoreLink">
-                        <div class="ctaArea">
-                            <a href="#" class="text-black">Contact us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-12 p-0">
-                <div class="seemoreImgArea">
-                    <div class="imgArea">
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/media/about/seemore_bg.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php get_template_part('template-parts/sections/seemore-section'); ?>
     </div>
 </section>
 
