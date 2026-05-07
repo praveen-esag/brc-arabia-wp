@@ -60,19 +60,21 @@ get_header(); ?>
                     </div>
                     <div class="resoSubList position-relative" data-aos="fade-up" data-aos-duration="1600">
                         <?php
-                        $reso_sub = 1;
-                        while (have_rows('_resources_types')) : the_row(); ?>
-                            <div class="resoSubItem <?php echo ($reso_sub === 1) ? 'active' : ''; ?>" data-tab="reso<?php echo $reso_sub; ?>">
+                        $reso_type = 1;
+                        while (have_rows('_resources_types')) : the_row();
+                            $reso_sub = 1; ?>
+                            <div class="resoSubItem <?php echo ($reso_type === 1) ? 'active' : ''; ?>" data-tab="reso<?php echo $reso_type; ?>">
                                 <?php while (have_rows('_resource_files')) : the_row(); ?>
                                     <div class="dwnldReso <?php echo ($reso_sub === 1) ? 'active' : ''; ?>">
                                         <h5 class="mb-0"><?php the_sub_field('_resource_file_name'); ?></h5>
                                         <?php if (get_sub_field('_upload_resource_file')) : ?>
                                             <div class="ctaBtn">
-                                                <a href="#" class="color-theme">Download</a>
+                                                <a href="<?php the_sub_field('_upload_resource_file'); ?>" target="_blank" class="color-theme">Download</a>
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                <?php endwhile; ?>
+                                <?php $reso_sub++;
+                                endwhile; ?>
                                 <!-- <div class="dwnldReso">
                                     <h5 class="mb-0">Wire Mesh - DCL</h5>
                                     <div class="ctaBtn">
@@ -105,7 +107,7 @@ get_header(); ?>
                                 </div> -->
                             </div>
                         <?php
-                            $reso_sub++;
+                            $reso_type++;
                         endwhile; ?>
                         <!-- <div class="resoSubItem" data-tab="reso2">
                             <div class="dwnldReso">

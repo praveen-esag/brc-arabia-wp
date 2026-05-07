@@ -53,6 +53,7 @@ jQuery(document).ready(function ($) {
     $(this).addClass('active');
   });
 
+  // Mobile menu toggle
   $('.toggleIcon').on('click', function () {
     $(this).toggleClass('active');
     $('#headerMain').toggleClass('menu-open');
@@ -63,6 +64,26 @@ jQuery(document).ready(function ($) {
       $('.toggleIcon').removeClass('active');
       $('#headerMain').removeClass('menu-open');
       $('body').removeClass('nav-open');
+    }
+  });
+
+  // Footer nav toggle
+  if (window.innerWidth <= 768) {
+    $('.navLabel').on('click', function () {
+      $(this).next('.navList').slideToggle(300);
+      $(this).toggleClass('show');
+    });
+  }
+
+  $('a[href^="#"]').on('click', function (e) {
+    e.preventDefault();
+
+    var target = $($(this).attr('href'));
+
+    if (target.length) {
+      $('html, body').animate({
+        scrollTop: target.offset().top - 50
+      }, 100);
     }
   });
 

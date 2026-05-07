@@ -68,7 +68,7 @@ get_header(); ?>
                     <?php if (get_sub_field('_story_cont_subtitle') || get_sub_field('_story_cont_title') || get_sub_field('_story_cont_desc') || get_sub_field('_story_cont_img')): ?>
                         <div id="brc-story" class="abtstorySec primary_bg flxdir_col_mob">
                             <div class="storycontArea mw-100-mob">
-                                <div class="vertLine" data-aos="fade-left" data-aos-duration="2000"></div>
+                                <div class="vertLine" data-aos="fade-down" data-aos-duration="2000"></div>
                                 <div class="secHead">
                                     <h4 class="subTitle text-white mb-3"><?php the_sub_field('_story_cont_subtitle'); ?></h4>
                                     <h1 class="mainTitle text-white mb-0" data-aos="fade-up" data-aos-duration="2000">
@@ -78,7 +78,7 @@ get_header(); ?>
                                 <div class="desc" data-aos="fade-up" data-aos-duration="2000">
                                     <p class="mb-0 text-white"><?php the_sub_field('_story_cont_desc'); ?></p>
                                 </div>
-                                <div class="horzLine" data-aos="fade-up" data-aos-duration="2000"></div>
+                                <div class="horzLine" data-aos="fade-right" data-aos-duration="2000"></div>
                             </div>
                             <?php $_story_cont_img = get_sub_field('_story_cont_img'); ?>
                             <?php if ($_story_cont_img) : ?>
@@ -94,11 +94,11 @@ get_header(); ?>
                 <?php while (have_rows('_grp_info_area')) : the_row(); ?>
                     <?php if (get_sub_field('_grp_cont_subtitle') || get_sub_field('_grp_cont_title') || get_sub_field('_grp_info_btn_link') || get_sub_field('_grp_cont_img')): ?>
                         <div id="algurg-group" class="abtgrpSec abtstorySec1 primary_bg flxdir_col_mob">
-                            <div class="horzLine" data-aos="fade-up" data-aos-duration="2000"></div>
+                            <div class="horzLine" data-aos="fade-left" data-aos-duration="2000"></div>
                             <?php $_grp_cont_img = get_sub_field('_grp_cont_img'); ?>
                             <?php if ($_grp_cont_img) : ?>
                                 <div class="storyImgArea grpImgArea position-relative mw-100-mob">
-                                    <div class="vertLine" data-aos="fade-left" data-aos-duration="2000"></div>
+                                    <div class="vertLine" data-aos="fade-up" data-aos-duration="2000"></div>
                                     <img src="<?php echo esc_url($_grp_cont_img['url']); ?>" alt="<?php echo esc_attr($_grp_cont_img['alt']); ?>" />
                                 </div>
                             <?php endif; ?>
@@ -109,7 +109,7 @@ get_header(); ?>
                                     <?php $_grp_info_btn_link = get_sub_field('_grp_info_btn_link'); ?>
                                     <?php if ($_grp_info_btn_link) : ?>
                                         <div class="maxCont ctaBtn" data-aos="fade-up" data-aos-duration="2200">
-                                            <a href="<?php echo esc_url($_grp_info_btn_link['url']); ?>" target="<?php echo esc_attr($_grp_info_btn_link['target']); ?>" class="text-white">
+                                            <a href="<?php echo esc_url($_grp_info_btn_link['url']); ?>" target="<?php echo esc_attr($_grp_info_btn_link['target']); ?>" class="text-white hover_yellow">
                                                 <?php the_sub_field('_grp_info_btntxt'); ?>
                                             </a>
                                         </div>
@@ -183,7 +183,7 @@ get_header(); ?>
 <!-- Vision & mission section start -->
 
 <section class="vismisSec">
-    <div class="container-fluid pe-0">
+    <div class="container-fluid pe-lg-0">
         <div class="vismisMain d-flex">
             <div class="vismisContArea">
                 <?php if (get_field('_vismis_sec_title') || get_field('_vismis_sec_desc')) : ?>

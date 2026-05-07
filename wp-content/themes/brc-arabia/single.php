@@ -22,7 +22,7 @@ get_header();
 						<div class="postCont">
 							<div class="titleArea">
 								<div class="backBtn mb-2" data-aos="fade-up" data-aos-duration="1200">
-									<a href="#" class="subTitle linkInherit">News & insights</a>
+									<a href="<?php echo home_url('/') ?>news/" class="subTitle linkInherit hover_theme">News & insights</a>
 								</div>
 								<h1 class="mainTitle" data-aos="fade-up" data-aos-duration="1500"><?php the_title(); ?></h1>
 								<h4 class="postDate color-theme" data-aos="fade-up" data-aos-duration="1200"><?php the_date(); ?></h4>
@@ -43,7 +43,7 @@ get_header();
 							?>
 							<div class="readAll">
 								<div class="ctaBtn maxCont">
-									<a href="<?php echo home_url('/') ?>news/" class="text-black text-uppercase">Read all</a>
+									<a href="<?php echo home_url('/') ?>news/" class="text-black hover_theme text-uppercase">Read all</a>
 								</div>
 							</div>
 						</div>
@@ -77,6 +77,12 @@ get_header();
 			</div>
 		</div>
 	</section>
+
+	<!-- Resources section start -->
+
+	<?php get_template_part('template-parts/sections/browse-resource'); ?>
+
+	<!-- Resources section end -->
 
 </main><!-- #main -->
 

@@ -39,22 +39,28 @@
 			<div class="col-lg-5 col-12 footnavCol">
 				<div class="footNav">
 					<div class="footNavItem">
-						<h4 class="text-white">BRC Arabia</h4>
-						<?php wp_nav_menu([
-							'menu' => 'BRC Arabia'
-						]); ?>
+						<h4 class="text-white navLabel">BRC Arabia</h4>
+						<div class="navList">
+							<?php wp_nav_menu([
+								'menu' => 'BRC Arabia'
+							]); ?>
+						</div>
 					</div>
 					<div class="footNavItem">
-						<h4 class="text-white">Products & Solutions</h4>
-						<?php wp_nav_menu([
-							'menu' => 'Products & Solutions'
-						]); ?>
+						<h4 class="text-white navLabel">Products & Solutions</h4>
+						<div class="navList">
+							<?php wp_nav_menu([
+								'menu' => 'Products & Solutions'
+							]); ?>
+						</div>
 					</div>
 					<div class="footNavItem">
-						<h4 class="text-white">quick links</h4>
-						<?php wp_nav_menu([
-							'menu' => 'Quick Links'
-						]); ?>
+						<h4 class="text-white navLabel">quick links</h4>
+						<div class="navList">
+							<?php wp_nav_menu([
+								'menu' => 'Quick Links'
+							]); ?>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -69,11 +75,14 @@
 				<p class="mb-0">©<?php echo date('Y'); ?> BRC ARABIA. All rights reserved</p>
 			</div>
 			<div class="social">
-				<a href="#">
+				<a href="https://www.linkedin.com/company/brc-arabia/" target="_blank" class="socialItem">
 					Follow us on <img src="<?php bloginfo('template_directory'); ?>/assets/media/linkedin_icon.svg" alt="LinkedIn">
 				</a>
+				<div class="credits d-lg-none">
+					<p class="mb-0 text-end">built by <a href="https://www.born28.com" target="_blank" class="linkInherit hover_white">Born28</a></p>
+				</div>
 			</div>
-			<div class="credits">
+			<div class="credits d-none d-lg-block">
 				<p class="mb-0 text-end">built by <a href="https://www.born28.com" target="_blank" class="linkInherit hover_white">Born28</a></p>
 			</div>
 		</div>

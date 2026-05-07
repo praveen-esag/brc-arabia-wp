@@ -13,7 +13,7 @@
                             <?php endif; ?>
                             <?php $_seemore_link = get_sub_field('_seemore_link'); ?>
                             <?php if ($_seemore_link) : ?>
-                                <a href="<?php echo esc_url($_seemore_link['url']); ?>" target="<?php echo esc_attr($_seemore_link['target']); ?>" class="text-black">
+                                <a href="<?php echo esc_url($_seemore_link['url']); ?>" target="<?php echo esc_attr($_seemore_link['target']); ?>" class="text-black1 hover_theme">
                                     <?php the_sub_field('_seemore_link_title'); ?>
                                 </a>
                             <?php endif; ?>

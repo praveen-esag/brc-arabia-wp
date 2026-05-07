@@ -22,7 +22,7 @@ get_header(); ?>
                         <div class="projMainInfo position-relative">
                             <div class="backCta" data-aos="fade-up" data-aos-duration="1200">
                                 <img src="<?php bloginfo('template_directory'); ?>/assets/media/backto_arrow.svg" alt="Back Arrow">
-                                <a href="<?php echo home_url('/') ?>projects" class="text-black">Back to projects</a>
+                                <a href="<?php echo home_url('/') ?>projects" class="text-black hover_theme">Back to projects</a>
                             </div>
                             <div class="secHead">
                                 <h1 class="xlTitle mb-0" data-aos="fade-up" data-aos-duration="1400"><?php the_title(); ?></h1>
@@ -31,24 +31,31 @@ get_header(); ?>
                                 </div>
                             </div>
                         </div>
-                        <?php if (have_rows('_sol_prov_list')) : ?>
-                            <div class="solutionInfo">
-                                <div class="titleArea pb-2" data-aos="fade-up" data-aos-duration="1400">
-                                    <h4><?php the_field('_sol_prov_title'); ?></h4>
-                                </div>
-                                <div class="solList">
-                                    <?php while (have_rows('_sol_prov_list')) : the_row(); ?>
-                                        <div class="solItem position-relative" data-aos="fade-up" data-aos-duration="1500"><?php the_sub_field('_sol_prov_item'); ?></div>
-                                    <?php endwhile; ?>
-                                </div>
-                            </div>
+                        <?php if (have_rows('_sol_provided_data')) : ?>
+                            <?php while (have_rows('_sol_provided_data')) : the_row(); ?>
+                                <?php if (have_rows('_sol_prov_list')) : ?>
+                                    <div class="solutionInfo">
+                                        <div class="titleArea pb-2" data-aos="fade-up" data-aos-duration="1400">
+                                            <h4><?php the_sub_field('_sol_prov_title'); ?></h4>
+                                        </div>
+                                        <div class="solList">
+                                            <?php while (have_rows('_sol_prov_list')) : the_row(); ?>
+                                                <div class="solItem position-relative" data-aos="fade-up" data-aos-duration="1500">
+                                                    <?php the_sub_field('_sol_prov_item'); ?>
+                                                </div>
+                                            <?php endwhile; ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endwhile; ?>
                         <?php endif; ?>
                     </div>
                     <div class="col-lg-7 col-12">
-                        <?php if (has_post_thumbnail()): ?>
+                        <?php $_project_img_main = get_field('_project_img_main'); ?>
+                        <?php if ($_project_img_main) : ?>
                             <div class="projFeatImg">
                                 <div class="imgArea position-relative">
-                                    <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                                    <img src="<?php echo esc_url($_project_img_main['url']); ?>" alt="<?php the_title(); ?>">
                                 </div>
                             </div>
                         <?php endif; ?>

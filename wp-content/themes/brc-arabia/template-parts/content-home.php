@@ -40,7 +40,7 @@ get_header(); ?>
                                     <?php $_hm_ban_btn_link = get_sub_field('_hm_ban_btn_link'); ?>
                                     <?php if ($_hm_ban_btn_link) : ?>
                                         <div class="flexNavItem ctaBtn">
-                                            <a href="<?php echo esc_url($_hm_ban_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_ban_btn_link['target']); ?>" class="text-white">
+                                            <a href="<?php echo esc_url($_hm_ban_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_ban_btn_link['target']); ?>" class="btn_yellow hover_white">
                                                 <?php the_sub_field('_hm_ban_btn_txt'); ?>
                                             </a>
                                         </div>
@@ -165,7 +165,7 @@ get_header(); ?>
 
 <!-- Stats section start -->
 
-<section class="statsSec">
+<section id="experience" class="statsSec">
     <div class="container-fluid">
         <div class="row justify-content-between flxdir_col_mob">
             <?php if (have_rows('_hm_stats_head')) : ?>
@@ -220,7 +220,7 @@ if ($prod_query->have_posts()) : ?>
                         <?php $_hm_prod_btn_link = get_field('_hm_prod_btn_link'); ?>
                         <?php if ($_hm_prod_btn_link) : ?>
                             <div class="flexNavItem ctaBtn" data-aos="fade-up" data-aos-duration="1300">
-                                <a href="<?php echo esc_url($_hm_prod_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_prod_btn_link['target']); ?>" class="text-black">
+                                <a href="<?php echo esc_url($_hm_prod_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_prod_btn_link['target']); ?>" class="text-black hover_theme">
                                     <?php the_field('_hm_prod_btn_txt'); ?>
                                 </a>
                             </div>
@@ -234,13 +234,13 @@ if ($prod_query->have_posts()) : ?>
                         <div class="prodItem" data-aos="fade-up" data-aos-duration="1200">
                             <?php if (has_post_thumbnail()): ?>
                                 <div class="prodImg">
-                                    <a href="<?php the_permalink(); ?>" class="linkInherit">
+                                    <a href="<?php the_permalink(); ?>">
                                         <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
                                     </a>
                                 </div>
                             <?php endif; ?>
                             <div class="prodInfo">
-                                <p><a href="<?php the_permalink(); ?>" class="linkInherit"><?php the_title(); ?></a></p>
+                                <p><a href="<?php the_permalink(); ?>" class="linkInherit hover_theme"><?php the_title(); ?></a></p>
                             </div>
                         </div>
                     <?php endwhile;
@@ -262,7 +262,7 @@ if ($prod_query->have_posts()) : ?>
 $proj_query = new WP_Query($projargs);
 
 if ($proj_query->have_posts()) : ?>
-    <section class="projSec">
+    <section id="projects" class="projSec">
         <div class="container-fluid">
             <div class="projGrid">
                 <?php if (get_field('_hm_proj_sec_title') || get_field('_hm_proj_btn_link')): ?>
@@ -282,16 +282,18 @@ if ($proj_query->have_posts()) : ?>
                 <?php endif; ?>
                 <?php while ($proj_query->have_posts()) : $proj_query->the_post(); ?>
                     <div class="projItem projGridItem" data-aos="fade-up" data-aos-duration="1300">
-                        <?php if (has_post_thumbnail()): ?>
+                        <?php //if (has_post_thumbnail()): ?>
+                            <?php $_project_img_main = get_field('_project_img_main'); ?>
+                        <?php if ($_project_img_main) : ?>
                             <div class="projImg">
                                 <a href="<?php the_permalink(); ?>">
-                                    <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                                    <img src="<?php echo esc_url($_project_img_main['url']); ?>" alt="<?php the_title(); ?>">
                                 </a>
                             </div>
                         <?php endif; ?>
                         <div class="projInfo">
-                            <p class="text-white">
-                                <a href="<?php the_permalink(); ?>" class="linkInherit hover_white"><?php the_title(); ?></a>
+                            <p class="text-white1">
+                                <a href="<?php the_permalink(); ?>" class="linkInherit hover_yellow"><?php the_title(); ?></a>
                             </p>
                         </div>
                     </div>
@@ -355,7 +357,7 @@ if ($news_query->have_posts()) : ?>
             <?php if ($_hm_news_btn_link) : ?>
                 <div class="row justify-content-end viewAllNews">
                     <div class="flexNavItem ctaBtn maxCont" data-aos="fade-up" data-aos-duration="1200">
-                        <a href="<?php echo esc_url($_hm_news_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_news_btn_link['target']); ?>" class="color-theme">
+                        <a href="<?php echo esc_url($_hm_news_btn_link['url']); ?>" target="<?php echo esc_attr($_hm_news_btn_link['target']); ?>" class="color-theme hover_black">
                             <?php the_field('_hm_news_btn_txt'); ?>
                         </a>
                     </div>

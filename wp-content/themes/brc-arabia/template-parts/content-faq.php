@@ -63,8 +63,11 @@ get_header(); ?>
 <!-- Banner section end -->
 
 <!-- Resources section start -->
+
+<?php get_template_part('template-parts/sections/browse-resource'); ?>
+
 <?php if (get_field('_cont_res_sec_title') || have_rows('_cont_resources_list')): ?>
-    <section class="resourceSec">
+    <section class="resourceSec d-none">
         <div class="resBanImg">
             <?php if (get_field('_cont_res_sec_bg')) : ?>
                 <div class="imgArea">

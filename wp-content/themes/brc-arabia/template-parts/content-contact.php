@@ -29,7 +29,7 @@ get_header(); ?>
                                 <h4 class="subTitle text-white" data-aos="fade-up" data-aos-duration="1200"><?php the_sub_field('_office_name'); ?></h4>
                                 <div class="desc adrs" data-aos="fade-up" data-aos-duration="1400">
                                     <p class="mb-0"><?php the_sub_field('_office_address'); ?>
-                                        <a href="<?php the_sub_field('_direction_link'); ?>" target="_blank">Get direction</a>
+                                        <a href="<?php the_sub_field('_direction_link'); ?>" class="hover_white" target="_blank">Get direction</a>
                                     </p>
                                 </div>
                                 <div class="desc phone" data-aos="fade-up" data-aos-duration="1600">
@@ -82,8 +82,11 @@ get_header(); ?>
 <!-- Banner section end -->
 
 <!-- Resources section start -->
+
+<?php get_template_part('template-parts/sections/browse-resource'); ?>
+
 <?php if (get_field('_cont_res_sec_title') || have_rows('_cont_resources_list')): ?>
-    <section class="resourceSec">
+    <section class="resourceSec d-none">
         <div class="resBanImg">
             <?php if (get_field('_cont_res_sec_bg')) : ?>
                 <div class="imgArea">
@@ -97,7 +100,7 @@ get_header(); ?>
                 <div class="ctaArea flexNav">
                     <?php while (have_rows('_cont_resources_list')) : the_row(); ?>
                         <div class="ctaBtn" data-aos="fade-up" data-aos-duration="1400">
-                            <a href="<?php the_sub_field('_cont_resource_file'); ?>" class="btn_yellow"><?php the_sub_field('_cont_resourse_name'); ?></a>
+                            <a href="<?php the_sub_field('_cont_resource_file'); ?>" class="btn_yellow hover_white"><?php the_sub_field('_cont_resourse_name'); ?></a>
                         </div>
                     <?php endwhile; ?>
                     <!-- <div class="ctaBtn">

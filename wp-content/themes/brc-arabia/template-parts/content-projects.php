@@ -78,7 +78,7 @@ if ($proj_query->have_posts()) : ?>
                                 <?php endif; ?>
                                 <div class="prodInfo">
                                     <p>
-                                        <a href="<?php the_permalink(); ?>" class="linkInherit <?php echo $nolink; ?>">
+                                        <a href="<?php the_permalink(); ?>" class="linkInherit <?php echo $nolink; ?> hover_theme">
                                             <?php the_title(); ?>
                                         </a>
                                     </p>

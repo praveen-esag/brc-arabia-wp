@@ -61,11 +61,11 @@ get_header(); ?>
                     <div class="floatNavList">
                         <div class="floatNavItem"><a href="#overview"><span>Overview</span></a></div>
                         <?php if ($avail_value !== 'none'): ?>
-                            <div class="floatNavItem"><a href="#<?php echo $avail_value; ?>"><span><?php echo $avail_label; ?></span></a></div>
+                            <div class="floatNavItem"><a href="#<?php echo $avail_value; ?>" class="hover_theme"><span><?php echo $avail_label; ?></span></a></div>
                         <?php endif; ?>
-                        <div class="floatNavItem"><a href="#faq"><span>FAQ</span></a></div>
-                        <div class="floatNavItem"><a href="#projects"><span>Projects</span></a></div>
-                        <div class="floatNavItem"><a href="#contact"><span>Contact</span></a></div>
+                        <div class="floatNavItem"><a href="#faq" class="hover_theme"><span>FAQ</span></a></div>
+                        <div class="floatNavItem"><a href="#projects" class="hover_theme"><span>Projects</span></a></div>
+                        <div class="floatNavItem"><a href="#contact" class="hover_theme"><span>Contact</span></a></div>
                     </div>
                 </div>
                 <div class="productInner">
@@ -78,17 +78,17 @@ get_header(); ?>
                                 <div class="ctaArea flexNav" data-aos="fade-up" data-aos-duration="1800">
                                     <?php if ($avail_value !== 'none'): ?>
                                         <div class="ctaBtn">
-                                            <a href="#<?php echo $avail_value; ?>" class="text-black">Available <?php echo $avail_label; ?></a>
+                                            <a href="#<?php echo $avail_value; ?>" class="text-black hover_theme">Available <?php echo $avail_label; ?></a>
                                         </div>
                                     <?php endif; ?>
                                     <div class="ctaBtn">
-                                        <a href="#projects" class="text-black">projects</a>
+                                        <a href="#projects" class="text-black hover_theme">projects</a>
                                     </div>
                                     <div class="ctaBtn">
-                                        <a href="#contact" class="text-black">contact us</a>
+                                        <a href="#contact" class="text-black hover_theme">contact us</a>
                                     </div>
                                     <div class="ctaBtn">
-                                        <a href="<?php echo home_url('/'); ?>resources" class="text-black">resources</a>
+                                        <a href="<?php echo home_url('/'); ?>resources" class="text-black hover_theme">resources</a>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +211,7 @@ get_header(); ?>
                                         <?php if ($_avail_btn_link) : ?>
                                             <div class="ctaArea" data-aos="fade-up" data-aos-duration="1600">
                                                 <div class="ctaBtn maxCont">
-                                                    <a href="<?php echo esc_url($_avail_btn_link); ?>" class="color-theme"><?php the_field('_avail_btn_text'); ?></a>
+                                                    <a href="<?php echo esc_url($_avail_btn_link); ?>" class="color-theme hover_black"><?php the_field('_avail_btn_text'); ?></a>
                                                 </div>
                                             </div>
                                         <?php endif; ?>
@@ -377,7 +377,7 @@ get_header(); ?>
                                                     <?php if ($_dblcol_btn_link) : ?>
                                                         <div class="ctaArea" data-aos="fade-up" data-aos-duration="1600">
                                                             <div class="ctaBtn maxCont">
-                                                                <a href="<?php echo esc_url($_dblcol_btn_link); ?>" class="color-theme">
+                                                                <a href="<?php echo esc_url($_dblcol_btn_link); ?>" class="color-theme hover_black">
                                                                     <?php the_sub_field('_dblcol_btn_txt'); ?>
                                                                 </a>
                                                             </div>

@@ -66,7 +66,7 @@ if ($prod_query->have_posts()) : ?>
                                     </div>
                                 <?php endif; ?>
                                 <div class="prodInfo">
-                                    <p><a href="<?php the_permalink(); ?>" class="linkInherit"><?php the_title(); ?></a></p>
+                                    <p><a href="<?php the_permalink(); ?>" class="linkInherit hover_theme"><?php the_title(); ?></a></p>
                                 </div>
                             </div>
                         <?php endwhile;

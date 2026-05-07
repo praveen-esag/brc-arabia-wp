@@ -31,7 +31,7 @@ get_header(); ?>
                     <?php if ($_eng_bansec_btn_link) : ?>
                         <div class="ctaArea mt-5" data-aos="fade-up" data-aos-duration="1600">
                             <div class="ctaBtn maxCont">
-                                <a href="<?php echo esc_url($_eng_bansec_btn_link); ?>" class="color-theme"><?php the_field('_eng_bansec_btn_txt'); ?></a>
+                                <a href="<?php echo esc_url($_eng_bansec_btn_link); ?>" class="color-theme hover_black"><?php the_field('_eng_bansec_btn_txt'); ?></a>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -80,7 +80,7 @@ get_header(); ?>
                             <?php if ($_eng_cont_btnlink) : ?>
                                 <div class="ctaArea mt-5">
                                     <div class="ctaBtn maxCont" data-aos="fade-up" data-aos-duration="1600">
-                                        <a href="<?php echo esc_url($_eng_cont_btnlink); ?>" class="color-theme"><?php the_sub_field('_eng_cont_btntxt'); ?></a>
+                                        <a href="<?php echo esc_url($_eng_cont_btnlink); ?>" class="color-theme hover_black"><?php the_sub_field('_eng_cont_btntxt'); ?></a>
                                     </div>
                                 </div>
                             <?php endif; ?>
@@ -96,8 +96,10 @@ get_header(); ?>
 
 <!-- Resources section start -->
 
+<?php get_template_part('template-parts/sections/browse-resource'); ?>
+
 <?php if (get_field('_eng_res_sec_title') || have_rows('_eng_resources_list')): ?>
-    <section class="resourceSec">
+    <section class="resourceSec d-none">
         <div class="resBanImg">
             <?php if (get_field('_eng_res_sec_bg')) : ?>
                 <div class="imgArea">
@@ -112,7 +114,7 @@ get_header(); ?>
                 <div class="ctaArea flexNav">
                     <?php while (have_rows('_eng_resources_list')) : the_row(); ?>
                         <div class="ctaBtn" data-aos="fade-up" data-aos-duration="1400">
-                            <a href="<?php the_sub_field('_eng_resource_file'); ?>" class="btn_yellow"><?php the_sub_field('_eng_resourse_name'); ?></a>
+                            <a href="<?php the_sub_field('_eng_resource_file'); ?>" class="btn_yellow hover_white"><?php the_sub_field('_eng_resourse_name'); ?></a>
                         </div>
                     <?php endwhile; ?>
                     <!-- <div class="ctaBtn">
