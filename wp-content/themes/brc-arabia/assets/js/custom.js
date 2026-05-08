@@ -22,7 +22,7 @@ jQuery(document).ready(function ($) {
     const parent = $(this).parent();
     const desc = $(this).next(".faqDesc");
 
-    // if already open → close it
+    // if already open - close it
     if (parent.hasClass("activeFaq")) {
       parent.removeClass("activeFaq");
       desc.slideUp(300);
@@ -67,6 +67,12 @@ jQuery(document).ready(function ($) {
     }
   });
 
+  // Megamenu toggle function
+  $('.megaToggleIcon').on('click', function () {
+    $(this).toggleClass('megaActive');
+    $('#headerMain').toggleClass('megaOpen');
+  });
+
   // Footer nav toggle
   if (window.innerWidth <= 768) {
     $('.navLabel').on('click', function () {
@@ -75,6 +81,7 @@ jQuery(document).ready(function ($) {
     });
   }
 
+  // Click to scroll to section
   $('a[href^="#"]').on('click', function (e) {
     e.preventDefault();
 
@@ -193,7 +200,7 @@ const observer = new IntersectionObserver(
   },
   {
     root: null,
-    rootMargin: "-40% 0px -40% 0px", // 🔥 trigger when section is centered
+    rootMargin: "-40% 0px -40% 0px", // trigger when section is centered
     threshold: 0
   }
 );
@@ -202,66 +209,350 @@ const observer = new IntersectionObserver(
 sections.forEach((section) => observer.observe(section));
 
 // Product menu preview function
-const items = document.querySelectorAll('.leftNav .menu > li > a.has-preview');
-const preview = document.querySelector('.menu-preview');
-const img = preview.querySelector('img');
-const btn = preview.querySelector('a');
+// const items = document.querySelectorAll('.leftNav .menu > li > a.has-preview');
+// const preview = document.querySelector('.menu-preview');
+// const img = preview.querySelector('img');
+// const btn = preview.querySelector('a');
 
-let activeItem = null;
-let timeout;
+// let activeItem = null;
+// let timeout;
 
-items.forEach(item => {
+// items.forEach(item => {
 
-  item.addEventListener('mouseenter', () => {
-    clearTimeout(timeout);
+//   item.addEventListener('mouseenter', () => {
+//     clearTimeout(timeout);
 
-    // remove previous active
-    items.forEach(i => i.classList.remove('active-link'));
+//     // remove previous active
+//     items.forEach(i => i.classList.remove('active-link'));
 
-    activeItem = item;
-    item.classList.add('active-link');
+//     activeItem = item;
+//     item.classList.add('active-link');
 
-    const rect = item.getBoundingClientRect();
-    const parentRect = item.closest('.leftNav').getBoundingClientRect();
+//     const rect = item.getBoundingClientRect();
+//     const parentRect = item.closest('.leftNav').getBoundingClientRect();
 
-    img.src = item.dataset.img;
-    if (btn) btn.href = item.dataset.link;
+//     img.src = item.dataset.img;
+//     if (btn) btn.href = item.dataset.link;
 
-    preview.style.left = (rect.left - parentRect.left) + 'px';
-    // preview.style.top = (rect.bottom - parentRect.top) + 'px';
+//     preview.style.left = (rect.left - parentRect.left) + 'px';
+//     // preview.style.top = (rect.bottom - parentRect.top) + 'px';
 
-    preview.classList.add('show');
-    const previewWidth = preview.offsetWidth;
-    const itemWidth = rect.width;
+//     preview.classList.add('show');
+//     const previewWidth = preview.offsetWidth;
+//     const itemWidth = rect.width;
 
-    preview.style.left =
-      (rect.left - parentRect.left) + (itemWidth / 2) - (previewWidth / 2) + 'px';
-  });
+//     preview.style.left =
+//       (rect.left - parentRect.left) + (itemWidth / 2) - (previewWidth / 2) + 'px';
+//   });
 
-  item.addEventListener('mouseleave', () => {
-    timeout = setTimeout(() => {
-      if (!preview.matches(':hover')) {
-        preview.classList.remove('show');
+//   item.addEventListener('mouseleave', () => {
+//     timeout = setTimeout(() => {
+//       if (!preview.matches(':hover')) {
+//         preview.classList.remove('show');
 
-        if (activeItem) {
-          activeItem.classList.remove('active-link');
-          activeItem = null;
-        }
-      }
-    }, 150);
-  });
-});
+//         if (activeItem) {
+//           activeItem.classList.remove('active-link');
+//           activeItem = null;
+//         }
+//       }
+//     }, 150);
+//   });
+// });
 
 // keep active while hovering preview
-preview.addEventListener('mouseenter', () => {
-  clearTimeout(timeout);
+// preview.addEventListener('mouseenter', () => {
+//   clearTimeout(timeout);
+// });
+
+// preview.addEventListener('mouseleave', () => {
+//   preview.classList.remove('show');
+
+//   if (activeItem) {
+//     activeItem.classList.remove('active-link');
+//     activeItem = null;
+//   }
+// });
+
+document.addEventListener("DOMContentLoaded", () => {
+  /*
+  ====================================
+  HOVER DESKTOP + CLICK MOBILE
+  ====================================
+  */
+
+  const items = document.querySelectorAll(".hoverListitem li");
+
+  items.forEach((item) => {
+
+    function activateHoverItem() {
+
+      const currentSlide = item.closest(".swiper-slide");
+
+      if (!currentSlide) return;
+
+      // remove active image class
+      currentSlide
+        .querySelectorAll(".hovermainimg .hoverImg")
+        .forEach((img) => {
+          img.classList.remove("activeimghover");
+        });
+
+      // remove active li class
+      currentSlide
+        .querySelectorAll(".hoverListitem li")
+        .forEach((li) => {
+          li.classList.remove("activeHoverItem");
+        });
+
+      // active current li
+      item.classList.add("activeHoverItem");
+
+      // get matching class
+      const matchedClass = [...item.classList]
+        .find(cls => cls.startsWith("hoverImg"));
+
+      if (!matchedClass) return;
+
+      // target image
+      const targetImg = currentSlide.querySelector(
+        ".hovermainimg img." + matchedClass
+      );
+
+      // add active class
+      if (targetImg) {
+        targetImg.classList.add("activeimghover");
+      }
+
+    }
+
+
+    function removeHoverItem() {
+
+      const currentSlide = item.closest(".swiper-slide");
+
+      if (!currentSlide) return;
+
+      // remove active image class
+      currentSlide
+        .querySelectorAll(".hovermainimg .hoverImg")
+        .forEach((img) => {
+          img.classList.remove("activeimghover");
+        });
+
+      // remove active li class
+      currentSlide
+        .querySelectorAll(".hoverListitem li")
+        .forEach((li) => {
+          li.classList.remove("activeHoverItem");
+        });
+
+    }
+
+
+    /*
+    ==========================
+    DESKTOP HOVER
+    ==========================
+    */
+
+    item.addEventListener("mouseenter", () => {
+
+      if (window.innerWidth > 991) {
+        activateHoverItem();
+      }
+
+    });
+
+    item.addEventListener("mouseleave", () => {
+
+      if (window.innerWidth > 991) {
+        removeHoverItem();
+      }
+
+    });
+
+
+    /*
+    ==========================
+    MOBILE CLICK
+    ==========================
+    */
+
+    item.addEventListener("pointerdown", (e) => {
+
+      if (window.innerWidth <= 991) {
+
+        e.stopPropagation();
+        activateHoverItem();
+
+      }
+
+    });
+
+  });
+
+
+
+  /*
+  ====================================
+  SWIPER
+  ====================================
+  */
+
+  const swiper = new Swiper(".qualityslider", {
+
+    loop: true,
+
+    navigation: {
+      nextEl: ".qualityslider .swiper-button-next",
+      prevEl: ".qualityslider .swiper-button-prev",
+    },
+
+    on: {
+
+      // init: function () {
+      //   updateArrowTitles(this);
+      // },
+
+      // slideChange: function () {
+      //   updateArrowTitles(this);
+      // }
+
+    }
+
+  });
+
+  /*
+  ====================================
+  UPDATE LABELS
+  ====================================
+  */
+
+  // function updateArrowTitles(swiper) {
+
+  //   const realSlides = [...swiper.slides].filter(slide => {
+  //     return !slide.classList.contains("swiper-slide-duplicate");
+  //   });
+
+  //   const currentRealIndex = swiper.realIndex;
+
+  //   let prevIndex = currentRealIndex - 1;
+  //   let nextIndex = currentRealIndex + 1;
+
+  //   if (prevIndex < 0) {
+  //     prevIndex = realSlides.length - 1;
+  //   }
+
+  //   if (nextIndex >= realSlides.length) {
+  //     nextIndex = 0;
+  //   }
+
+  //   const prevTitle =
+  //     realSlides[prevIndex].getAttribute("data-title");
+
+  //   const nextTitle =
+  //     realSlides[nextIndex].getAttribute("data-title");
+
+  //   document.querySelector(".prevTitle").textContent = prevTitle;
+  //   document.querySelector(".nextTitle").textContent = nextTitle;
+  // }
+
 });
 
-preview.addEventListener('mouseleave', () => {
-  preview.classList.remove('show');
+// let lastScrollY = window.scrollY;
+// const header = document.querySelector(".mainHeader");
+// const hmbanner = document.querySelector(".bannerSec");
 
-  if (activeItem) {
-    activeItem.classList.remove('active-link');
-    activeItem = null;
-  }
-});
+// if (header && hmbanner) {
+//   const bannerBottom = hmbanner.offsetTop + hmbanner.offsetHeight;
+
+//   window.addEventListener("scroll", function () {
+//     const scrollY = window.scrollY;
+
+//     // Inside banner - absolute header only
+//     if (scrollY < bannerBottom) {
+//       header.classList.remove("is_sticky", "is_visible");
+//       lastScrollY = scrollY;
+//       return;
+//     }
+
+//     // Passed banner - enable sticky mode
+//     header.classList.add("is_sticky");
+
+//     // Scroll DOWN - hide
+//     if (scrollY > lastScrollY) {
+//       header.classList.remove("is_visible");
+//     }
+//     // Scroll UP - show
+//     else {
+//       header.classList.add("is_visible");
+//     }
+
+//     lastScrollY = scrollY;
+//   });
+// }
+
+// const header = document.querySelector('.mainHeader');
+// const body = document.body;
+
+// const isHome = body.classList.contains('home');
+// const banner = document.querySelector('.homeBanner');
+
+// let lastScroll = 0;
+
+// window.addEventListener('scroll', () => {
+
+//   const currentScroll = window.pageYOffset;
+
+//   const triggerPoint = isHome && banner
+//     ? banner.offsetHeight
+//     : 100;
+
+//   // =========================
+//   // RESET TO ORIGINAL HEADER
+//   // =========================
+//   if (currentScroll <= triggerPoint) {
+
+//     header.classList.remove('stickyHeader');
+//     header.classList.remove('hideSticky');
+
+//     lastScroll = currentScroll;
+
+//     return;
+//   }
+
+//   // =========================
+//   // SCROLLING UP
+//   // =========================
+//   if (currentScroll < lastScroll) {
+
+//     header.classList.add('stickyHeader');
+
+//     requestAnimationFrame(() => {
+//       header.classList.remove('hideSticky');
+//     });
+
+//   }
+
+//   // =========================
+//   // SCROLLING DOWN
+//   // =========================
+//   else {
+
+//     header.classList.add('hideSticky');
+
+//     setTimeout(() => {
+
+//       if (header.classList.contains('hideSticky')) {
+//         header.classList.remove('stickyHeader');
+//       }
+
+//     }, 350);
+
+//   }
+
+//   lastScroll = currentScroll <= 0
+//     ? 0
+//     : currentScroll;
+
+// });

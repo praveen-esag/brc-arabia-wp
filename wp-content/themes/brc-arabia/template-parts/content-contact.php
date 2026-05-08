@@ -29,7 +29,7 @@ get_header(); ?>
                                 <h4 class="subTitle text-white" data-aos="fade-up" data-aos-duration="1200"><?php the_sub_field('_office_name'); ?></h4>
                                 <div class="desc adrs" data-aos="fade-up" data-aos-duration="1400">
                                     <p class="mb-0"><?php the_sub_field('_office_address'); ?>
-                                        <a href="<?php the_sub_field('_direction_link'); ?>" class="hover_white" target="_blank">Get direction</a>
+                                        <a href="<?php the_sub_field('_direction_link'); ?>" class="hover_white" target="_blank">Get directions</a>
                                     </p>
                                 </div>
                                 <div class="desc phone" data-aos="fade-up" data-aos-duration="1600">

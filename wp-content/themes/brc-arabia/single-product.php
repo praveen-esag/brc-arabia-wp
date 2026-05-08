@@ -54,7 +54,9 @@ get_header(); ?>
 
         <?php $avail_type = get_field('_avail_type');
         $avail_label = $avail_type['label'];
-        $avail_value = $avail_type['value']; ?>
+        $avail_value = $avail_type['value'];
+        $prodtitle = get_the_title();
+        $first_word = strtolower(strtok($prodtitle, " ")); ?>
         <div class="productMain">
             <div class="productMainWrap">
                 <div class="floatNav">
@@ -68,7 +70,7 @@ get_header(); ?>
                         <div class="floatNavItem"><a href="#contact" class="hover_theme"><span>Contact</span></a></div>
                     </div>
                 </div>
-                <div class="productInner">
+                <div class="productInner <?php echo $first_word; ?>">
                     <div class="container-theme">
                         <section id="overview">
                             <div class="descWithCta justify-content-between">

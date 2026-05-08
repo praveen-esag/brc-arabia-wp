@@ -104,59 +104,103 @@ get_header(); ?>
     <div class="container-fluid">
         <div class="qualCont">
             <div class="qualHead secHead">
-                <h4 class="subTitle color-theme" data-aos="fade-up" data-aos-duration="1200">reliable quality</h4>
-                <h2 class="mainTitle text-black mb-0" data-aos="fade-up" data-aos-duration="1400">High-performance steel reinforcement through strict quality control</h2>
+                <h4 class="subTitle color-theme">reliable quality</h4>
+                <h2 class="mainTitle text-black mb-0">High-performance steel reinforcement through strict quality control</h2>
             </div>
         </div>
-        <div class="qualDemo">
-            <div class="qualDemoImg position-relative">
-                <div class="imgArea">
-                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/quality_demo.png" alt="Reliable Quality">
-                </div>
-                <div class="qualInfo">
-                    <div class="qualItem">
-                        <h4 class="subTitle position-relative">Vertical <br />reinforcment</h4>
-                        <div class="qualDesc">
-                            <p>Advanced facilities handle complex BBS accurately. Full material traceability ensures consistent performance.</p>
-                        </div>
-                        <div class="imgArea qualItemImg">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/vertical_reinforcement.png" alt="">
-                        </div>
-                    </div>
-                    <div class="qualItem">
-                        <h4 class="subTitle position-relative">Precision <br />Stirrups</h4>
-                        <div class="qualDesc">
-                            <p>Our modern machinery delivers angular precision. Strict quality control eliminates manual bending risks.</p>
-                        </div>
+        <!--<div class="qualDemo">-->
+        <!--    <div class="qualDemoImg position-relative">-->
+        <!--        <div class="imgArea">-->
+        <!--            <img src="<?php bloginfo('template_directory'); ?>/assets/media/quality_demo.png" alt="Reliable Quality">-->
+        <!--        </div>-->
+        <!--        <div class="qualInfo">-->
+        <!--            <div class="qualItem">-->
+        <!--                <h4 class="subTitle position-relative">Vertical <br />reinforcment</h4>-->
+        <!--                <div class="qualDesc">-->
+        <!--                    <p>Advanced facilities handle complex BBS accurately. Full material traceability ensures consistent performance.</p>-->
+        <!--                </div>-->
+        <!--                <div class="imgArea qualItemImg">-->
+        <!--                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/vertical_reinforcement.png" alt="">-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="qualItem">-->
+        <!--                <h4 class="subTitle position-relative">Precision <br />Stirrups</h4>-->
+        <!--                <div class="qualDesc">-->
+        <!--                    <p>Our modern machinery delivers angular precision. Strict quality control eliminates manual bending risks.</p>-->
+        <!--                </div>-->
                         <!-- <div class="imgArea qualItemImg">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/vertical_reinforcement.png" alt="">
-                        </div> -->
-                    </div>
-                    <div class="qualItem">
-                        <h4 class="subTitle position-relative">Structural Wall Reinforcement</h4>
-                        <div class="qualDesc">
-                            <p>Our modern machinery guarantees exact grid alignment for consistent structural performance.</p>
-                        </div>
-                        <div class="imgArea qualItemImg">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/structural_wall_reinforcement.png" alt="">
-                        </div>
-                    </div>
-                    <div class="qualItem">
-                        <h4 class="subTitle position-relative">Horizontal Slab Reinforcement</h4>
-                        <div class="qualDesc">
-                            <p>Strict quality control ensures uniform grids for consistent performance.</p>
-                        </div>
-                        <div class="imgArea qualItemImg">
-                            <img src="<?php bloginfo('template_directory'); ?>/assets/media/horizontal_slab_reinforcement.png" alt="">
-                        </div>
-                    </div>
+        <!--                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/vertical_reinforcement.png" alt="">-->
+        <!--                </div> -->
+        <!--            </div>-->
+        <!--            <div class="qualItem">-->
+        <!--                <h4 class="subTitle position-relative">Structural Wall Reinforcement</h4>-->
+        <!--                <div class="qualDesc">-->
+        <!--                    <p>Our modern machinery guarantees exact grid alignment for consistent structural performance.</p>-->
+        <!--                </div>-->
+        <!--                <div class="imgArea qualItemImg">-->
+        <!--                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/structural_wall_reinforcement.png" alt="">-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="qualItem">-->
+        <!--                <h4 class="subTitle position-relative">Horizontal Slab Reinforcement</h4>-->
+        <!--                <div class="qualDesc">-->
+        <!--                    <p>Strict quality control ensures uniform grids for consistent performance.</p>-->
+        <!--                </div>-->
+        <!--                <div class="imgArea qualItemImg">-->
+        <!--                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/horizontal_slab_reinforcement.png" alt="">-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="qualDemoNote">-->
+        <!--            <div class="noteBox">-->
+        <!--                <p class="text-white mb-0">NOTE: Hover on names to interact</p>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+        <div class="hoverBoxhomewrapper">
+              <div class="swiper qualityslider">
+<!--                  <div class="swiper-button-prev">-->
+<!--    <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/arrow-left.svg" alt="">-->
+
+<!--    <div class="arrowSlideTitle prevTitle"></div>-->
+<!--</div>-->
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" data-title="FULL TRACEABILITY">
+                                  <div class="hoverBoxhome">
+                <div class="hovermainimg">
+                     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/mainimg.webp" alt="" class="mainImg activeimg">
+                     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/hoverimg1.webp" alt="" class="hoverImg hoverImg1">
+                     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/hoverimg2.webp" alt="" class="hoverImg hoverImg2">
+                     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/hoverimg3.webp" alt="" class="hoverImg hoverImg3">
                 </div>
-                <div class="qualDemoNote">
-                    <div class="noteBox">
-                        <p class="text-white mb-0">NOTE: Hover on names to interact</p>
-                    </div>
+                <div class="hoverListitem">
+                    <ul>
+                        <li class="hoverImg1"><span><b>concrete slab</b></span></li>
+                        <li class="hoverImg1"><span><b>load transfer</b></span></li>
+                        <li class="hoverImg1"><span><b>top slab rebar</b></span></li>
+                        <li class="hoverImg1"><span><b>bottom slab rebar</b></span></li>
+                        <li class="hoverImg2"><span><b>beam column connection</b></span></li>
+                        <li class="hoverImg2"><span><b>Beams</b></span></li>
+                        <li class="hoverImg3"><span><b>beam stirrups</b></span></li>
+                    </ul>
                 </div>
             </div>
+            </div>
+                <!--  <div class="swiper-slide" data-title="STABILITY">               <div class="hoverBoxhome">    <div class="hovermainimg">-->
+                <!--     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/mainimg.webp" alt="" class="">-->
+                <!--</div></div></div>-->
+                <!-- <div class="swiper-slide" data-title="LOAD TRANSFER">               <div class="hoverBoxhome">    <div class="hovermainimg">-->
+                <!--     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/mainimg.webp" alt="" class="">-->
+                <!--</div></div></div>-->
+                </div>
+<!--               <div class="swiper-button-next">-->
+<!--    <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/arrow-right.svg" alt="">-->
+
+<!--    <div class="arrowSlideTitle nextTitle"></div>-->
+<!--</div>-->
+              </div>
+
         </div>
     </div>
 </section>

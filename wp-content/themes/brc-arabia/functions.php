@@ -267,24 +267,60 @@ add_filter('wpcf7_form_autocomplete', function ($autocomplete) {
 //     </style>';
 // });
 
+// add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $args) {
+
+// 	// 👇 target only this menu
+// 	if ($args->menu !== 'Main Menu Left') {
+// 		return $item_output;
+// 	}
+
+// 	if ($item->object === 'product') {
+
+// 		$img  = get_the_post_thumbnail_url($item->object_id, 'medium');
+// 		$link = get_permalink($item->object_id);
+
+// 		if ($img) {
+// 			$item_output = str_replace(
+// 				'<a',
+// 				'<a class="has-preview" data-img="' . $img . '" data-link="' . $link . '"',
+// 				$item_output
+// 			);
+// 		}
+// 	}
+
+// 	return $item_output;
+// }, 10, 4);
+
 add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $args) {
 
-	// 👇 target only this menu
+	// Only this menu
 	if ($args->menu !== 'Main Menu Left') {
 		return $item_output;
 	}
 
-	if ($item->object === 'product') {
+	// Only top-level project items
+	if ($item->object === 'product' && $depth === 0) {
 
 		$img  = get_the_post_thumbnail_url($item->object_id, 'medium');
 		$link = get_permalink($item->object_id);
 
+		// Add class to <a>
+		$item_output = str_replace(
+			'<a',
+			'<a class="has-preview"',
+			$item_output
+		);
+
+		// Append preview HTML
 		if ($img) {
-			$item_output = str_replace(
-				'<a',
-				'<a class="has-preview" data-img="' . $img . '" data-link="' . $link . '"',
-				$item_output
-			);
+
+			$preview = '
+            <div class="menu-preview">
+                <a href="' . $link . '"><img src="' . $img . '" alt=""></a>
+                <a href="' . $link . '" class="know-more">Know More</a>
+            </div>';
+
+			$item_output .= $preview;
 		}
 	}
 

@@ -41,12 +41,12 @@
 							<?php wp_nav_menu([
 								'menu' => 'Main Menu Left'
 							]); ?>
-							<div class="menu-preview">
+							<!-- <div class="menu-preview">
 								<a href="#" class="btn">
 									<img src="" alt="">
 								</a>
 								<a href="#" class="btn knowmore_btn">Know More</a>
-							</div>
+							</div> -->
 						</nav>
 					</div>
 					<div class="logo_area logo">
@@ -54,11 +54,13 @@
 							<?php //the_custom_logo(); 
 							?>
 							<?php if (is_front_page()) { ?>
-								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo.svg" alt="BRC Logo">
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo.svg" alt="BRC Logo" class="logoLight">
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo" class="logoDark">
 							<?php } elseif (is_page_template('template-parts/content-contact.php') || is_404()) { ?>
-								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_white.svg" alt="BRC Logo">
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_white.svg" alt="BRC Logo" class="logoLight">
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo" class="logoDark">
 							<?PHP } else { ?>
-								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo">
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo" class="">
 							<?PHP } ?>
 						</a>
 					</div>
@@ -67,7 +69,12 @@
 							<?php wp_nav_menu([
 								'menu' => 'Main Menu Right'
 							]); ?>
-							<div class="toggleIcon" aria-label="Toggle Menu">
+							<div class="megaToggleIcon d-lg-flex d-none" aria-label="Toggle Menu">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+							<div class="toggleIcon d-lg-none">
 								<span></span>
 								<span></span>
 								<span></span>
@@ -77,3 +84,6 @@
 				</div>
 			</div>
 		</header><!-- #masthead -->
+		<!-- <div class="megaMenu">
+
+		</div> -->
