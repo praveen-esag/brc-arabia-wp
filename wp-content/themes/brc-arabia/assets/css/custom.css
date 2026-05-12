@@ -2746,16 +2746,6 @@ img {
     margin-top: 25px;
 }
 
-/* .resoList {
-    border-right: 1px solid rgba(0, 0, 0, 0.37);
-} */
-
-.resoItem {
-    /* max-width: 50%; */
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.37); */
-    /* padding-right: 15px; */
-}
-
 .resoItem.active {
     border-color: #0C56B7;
 }
@@ -4592,6 +4582,7 @@ img {
 
     .newsInfo .desc p {
         display: -webkit-box;
+        line-clamp: 3;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
