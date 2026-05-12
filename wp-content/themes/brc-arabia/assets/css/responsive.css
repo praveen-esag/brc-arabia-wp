@@ -546,8 +546,10 @@
     }
 
     .prodImg img {
-        max-height: 260px;
-        height: 260px;
+        /* max-height: 260px;
+        height: 260px; */
+        max-height: 450px;
+        height: 450px;
         width: 100%;
         object-fit: cover;
     }
@@ -565,7 +567,7 @@
     .projGrid {
         display: flex;
         flex-direction: column;
-        gap: 0;
+        /* gap: 0; */
     }
 
     /* Remove pseudo-element grid lines */
@@ -910,7 +912,7 @@
 
     .breadcrumbList {
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 18px;
     }
 
     .prodBanImg img {
@@ -1126,14 +1128,20 @@
         object-fit: cover;
     }
 
-    .relProjSec .projSwiperNav {
-        position: static;
-        top: auto;
-        right: auto;
-        padding-top: 20px;
+    .relProjSec .projSwiperNav,
+    .newsSwiperNav {
+        /* position: static; */
+        top: 0px;
+        right: 15px;
+        padding-top: 0px;
         display: flex;
         justify-content: center;
         gap: 40px;
+    }
+
+    .relProjSec .projSwiperNav img,
+    .newsSwiperNav img {
+        width: 12px;
     }
 
     /* Contact form section (product page) */
@@ -1151,10 +1159,15 @@
         flex: 0 0 100%;
         width: 100%;
     }
+    
+    .contFormArea .formCol .wpcf7-response-output {
+        margin-top: 10px !important;
+    }
 
     .contFormArea .imgArea {
         max-width: 100%;
         flex: 0 0 100%;
+        padding-top: 40px;
     }
 
     .contFormArea .imgArea img {
@@ -1504,7 +1517,7 @@
 
     .resoList {
         border-right: none;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+        /* border-bottom: 1px solid rgba(0, 0, 0, 0.37); */
         padding-bottom: 8px;
         margin-bottom: 16px;
     }
@@ -1518,11 +1531,13 @@
     }
 
     .dwnldReso {
-        padding-left: 0;
+        padding-left: 10px;
         height: auto;
         min-height: 56px;
         flex-wrap: wrap;
         gap: 8px;
+        border-right: 1px solid rgba(0, 0, 0, 0.37);
+        padding-right: 15px;
     }
 
     .dwnldReso h5 {

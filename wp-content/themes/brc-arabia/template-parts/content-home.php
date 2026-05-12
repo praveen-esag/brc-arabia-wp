@@ -128,7 +128,7 @@ get_header(); ?>
         <!--                <div class="qualDesc">-->
         <!--                    <p>Our modern machinery delivers angular precision. Strict quality control eliminates manual bending risks.</p>-->
         <!--                </div>-->
-                        <!-- <div class="imgArea qualItemImg">
+        <!-- <div class="imgArea qualItemImg">
         <!--                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/vertical_reinforcement.png" alt="">-->
         <!--                </div> -->
         <!--            </div>-->
@@ -159,47 +159,47 @@ get_header(); ?>
         <!--    </div>-->
         <!--</div>-->
         <div class="hoverBoxhomewrapper">
-              <div class="swiper qualityslider">
-<!--                  <div class="swiper-button-prev">-->
-<!--    <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/arrow-left.svg" alt="">-->
+            <div class="swiper qualityslider">
+                <!--                  <div class="swiper-button-prev">-->
+                <!--    <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/arrow-left.svg" alt="">-->
 
-<!--    <div class="arrowSlideTitle prevTitle"></div>-->
-<!--</div>-->
+                <!--    <div class="arrowSlideTitle prevTitle"></div>-->
+                <!--</div>-->
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide" data-title="FULL TRACEABILITY">
-                                  <div class="hoverBoxhome">
-                <div class="hovermainimg">
-                     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/mainimg.webp" alt="" class="mainImg activeimg">
-                     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/hoverimg1.webp" alt="" class="hoverImg hoverImg1">
-                     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/hoverimg2.webp" alt="" class="hoverImg hoverImg2">
-                     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/hoverimg3.webp" alt="" class="hoverImg hoverImg3">
+                    <div class="swiper-slide" data-title="FULL TRACEABILITY">
+                        <div class="hoverBoxhome">
+                            <div class="hovermainimg">
+                                <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/mainimg.webp" alt="" class="mainImg activeimg">
+                                <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/hoverimg1.webp" alt="" class="hoverImg hoverImg1">
+                                <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/hoverimg2.webp" alt="" class="hoverImg hoverImg2">
+                                <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/hoverimg3.webp" alt="" class="hoverImg hoverImg3">
+                            </div>
+                            <div class="hoverListitem">
+                                <ul>
+                                    <li class="hoverImg1"><span><b>concrete slab</b></span></li>
+                                    <li class="hoverImg1"><span><b>load transfer</b></span></li>
+                                    <li class="hoverImg1"><span><b>top slab rebar</b></span></li>
+                                    <li class="hoverImg1"><span><b>bottom slab rebar</b></span></li>
+                                    <li class="hoverImg2"><span><b>beam column connection</b></span></li>
+                                    <li class="hoverImg2"><span><b>Beams</b></span></li>
+                                    <li class="hoverImg3"><span><b>beam stirrups</b></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  <div class="swiper-slide" data-title="STABILITY">               <div class="hoverBoxhome">    <div class="hovermainimg">-->
+                    <!--     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/mainimg.webp" alt="" class="">-->
+                    <!--</div></div></div>-->
+                    <!-- <div class="swiper-slide" data-title="LOAD TRANSFER">               <div class="hoverBoxhome">    <div class="hovermainimg">-->
+                    <!--     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/mainimg.webp" alt="" class="">-->
+                    <!--</div></div></div>-->
                 </div>
-                <div class="hoverListitem">
-                    <ul>
-                        <li class="hoverImg1"><span><b>concrete slab</b></span></li>
-                        <li class="hoverImg1"><span><b>load transfer</b></span></li>
-                        <li class="hoverImg1"><span><b>top slab rebar</b></span></li>
-                        <li class="hoverImg1"><span><b>bottom slab rebar</b></span></li>
-                        <li class="hoverImg2"><span><b>beam column connection</b></span></li>
-                        <li class="hoverImg2"><span><b>Beams</b></span></li>
-                        <li class="hoverImg3"><span><b>beam stirrups</b></span></li>
-                    </ul>
-                </div>
-            </div>
-            </div>
-                <!--  <div class="swiper-slide" data-title="STABILITY">               <div class="hoverBoxhome">    <div class="hovermainimg">-->
-                <!--     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/mainimg.webp" alt="" class="">-->
-                <!--</div></div></div>-->
-                <!-- <div class="swiper-slide" data-title="LOAD TRANSFER">               <div class="hoverBoxhome">    <div class="hovermainimg">-->
-                <!--     <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/mainimg.webp" alt="" class="">-->
-                <!--</div></div></div>-->
-                </div>
-<!--               <div class="swiper-button-next">-->
-<!--    <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/arrow-right.svg" alt="">-->
+                <!--               <div class="swiper-button-next">-->
+                <!--    <img src="<?php bloginfo('template_directory'); ?>/assets/home-quality/arrow-right.svg" alt="">-->
 
-<!--    <div class="arrowSlideTitle nextTitle"></div>-->
-<!--</div>-->
-              </div>
+                <!--    <div class="arrowSlideTitle nextTitle"></div>-->
+                <!--</div>-->
+            </div>
 
         </div>
     </div>
@@ -326,8 +326,9 @@ if ($proj_query->have_posts()) : ?>
                 <?php endif; ?>
                 <?php while ($proj_query->have_posts()) : $proj_query->the_post(); ?>
                     <div class="projItem projGridItem" data-aos="fade-up" data-aos-duration="1300">
-                        <?php //if (has_post_thumbnail()): ?>
-                            <?php $_project_img_main = get_field('_project_img_main'); ?>
+                        <?php //if (has_post_thumbnail()): 
+                        ?>
+                        <?php $_project_img_main = get_field('_project_img_main'); ?>
                         <?php if ($_project_img_main) : ?>
                             <div class="projImg">
                                 <a href="<?php the_permalink(); ?>">
@@ -368,34 +369,44 @@ if ($news_query->have_posts()) : ?>
                     </div>
                 </div>
             <?php endif; ?>
-            <div class="row">
-                <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
-                    <div class="col-lg-4 col-12" data-aos="fade-up" data-aos-duration="1300">
-                        <div class="newsItem">
-                            <?php if (has_post_thumbnail()): ?>
-                                <div class="newsImg">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
-                                    </a>
-                                </div>
-                            <?php endif; ?>
-                            <div class="newsInfo">
-                                <div class="titleArea">
-                                    <h4>
-                                        <a href="<?php the_permalink(); ?>" class="linkInherit hover_white"><?php the_title(); ?></a>
-                                    </h4>
-                                </div>
-                                <div class="desc">
-                                    <?php the_excerpt(); ?>
-                                </div>
-                                <div class="readMore">
-                                    <a href="<?php the_permalink(); ?>">Read</a>
+            <div class="newsSlider swiper">
+                <div class="row swiper-wrapper">
+                    <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
+                        <div class="col-lg-4 col-12 swiper-slide" data-aos="fade-up" data-aos-duration="1300">
+                            <div class="newsItem">
+                                <?php if (has_post_thumbnail()): ?>
+                                    <div class="newsImg">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="newsInfo">
+                                    <div class="titleArea">
+                                        <h4>
+                                            <a href="<?php the_permalink(); ?>" class="linkInherit hover_white"><?php the_title(); ?></a>
+                                        </h4>
+                                    </div>
+                                    <div class="desc">
+                                        <?php the_excerpt(); ?>
+                                    </div>
+                                    <div class="readMore">
+                                        <a href="<?php the_permalink(); ?>">Read</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endwhile;
-                wp_reset_postdata(); ?>
+                    <?php endwhile;
+                    wp_reset_postdata(); ?>
+                </div>
+            </div>
+            <div class="projSwiperNav newsSwiperNav" data-aos="fade-up" data-aos-duration="1800">
+                <div class="swiper-button-prev">
+                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/arrow-left-theme.svg" alt="Next" />
+                </div>
+                <div class="swiper-button-next">
+                    <img src="<?php bloginfo('template_directory'); ?>/assets/media/arrow-right-theme.svg" alt="Next" />
+                </div>
             </div>
             <?php $_hm_news_btn_link = get_field('_hm_news_btn_link'); ?>
             <?php if ($_hm_news_btn_link) : ?>

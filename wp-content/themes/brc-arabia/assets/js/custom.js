@@ -459,100 +459,154 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-// let lastScrollY = window.scrollY;
-// const header = document.querySelector(".mainHeader");
-// const hmbanner = document.querySelector(".bannerSec");
+// Stikcy Header function
+const header = document.querySelector('.mainHeader');
+const body = document.body;
 
-// if (header && hmbanner) {
-//   const bannerBottom = hmbanner.offsetTop + hmbanner.offsetHeight;
+const isHome = body.classList.contains('home');
+const banner = document.querySelector('.homeBanner');
 
-//   window.addEventListener("scroll", function () {
-//     const scrollY = window.scrollY;
+const headerHeight = header.offsetHeight;
 
-//     // Inside banner - absolute header only
-//     if (scrollY < bannerBottom) {
-//       header.classList.remove("is_sticky", "is_visible");
-//       lastScrollY = scrollY;
-//       return;
-//     }
+let lastScroll = 0;
 
-//     // Passed banner - enable sticky mode
-//     header.classList.add("is_sticky");
+window.addEventListener('scroll', () => {
 
-//     // Scroll DOWN - hide
-//     if (scrollY > lastScrollY) {
-//       header.classList.remove("is_visible");
-//     }
-//     // Scroll UP - show
-//     else {
-//       header.classList.add("is_visible");
-//     }
+  const currentScroll = window.pageYOffset;
 
-//     lastScrollY = scrollY;
-//   });
-// }
+  // homepage trigger = banner height
+  // inner pages trigger = 100
+  const triggerPoint = isHome && banner
+    ? banner.offsetHeight
+    : 100;
 
-// const header = document.querySelector('.mainHeader');
-// const body = document.body;
+  // =========================
+  // RESET TO NORMAL HEADER
+  // =========================
+  if (
+    header.classList.contains('stickyHeader') &&
+    currentScroll <= (triggerPoint + headerHeight)
+  ) {
 
-// const isHome = body.classList.contains('home');
-// const banner = document.querySelector('.homeBanner');
+    header.classList.add('hideSticky');
 
-// let lastScroll = 0;
+    setTimeout(() => {
 
-// window.addEventListener('scroll', () => {
+      header.classList.remove('stickyHeader');
+      header.classList.remove('hideSticky');
 
-//   const currentScroll = window.pageYOffset;
+      // remove spacing for inner pages
+      if (!isHome) {
+        document.body.style.paddingTop = '';
+      }
 
-//   const triggerPoint = isHome && banner
-//     ? banner.offsetHeight
-//     : 100;
+    }, 350);
 
-//   // =========================
-//   // RESET TO ORIGINAL HEADER
-//   // =========================
-//   if (currentScroll <= triggerPoint) {
+    lastScroll = currentScroll;
 
-//     header.classList.remove('stickyHeader');
-//     header.classList.remove('hideSticky');
+    return;
+  }
 
-//     lastScroll = currentScroll;
+  // =========================
+  // SCROLLING UP
+  // =========================
+  if (
+    currentScroll > triggerPoint &&
+    currentScroll < lastScroll
+  ) {
 
-//     return;
-//   }
+    header.classList.add('stickyHeader');
 
-//   // =========================
-//   // SCROLLING UP
-//   // =========================
-//   if (currentScroll < lastScroll) {
+    // spacing for inner pages
+    if (!isHome) {
+      document.body.style.paddingTop =
+        headerHeight + 'px';
+    }
 
-//     header.classList.add('stickyHeader');
+    requestAnimationFrame(() => {
+      header.classList.remove('hideSticky');
+    });
 
-//     requestAnimationFrame(() => {
-//       header.classList.remove('hideSticky');
-//     });
+  }
 
-//   }
+  // =========================
+  // SCROLLING DOWN
+  // =========================
+  else {
 
-//   // =========================
-//   // SCROLLING DOWN
-//   // =========================
-//   else {
+    // only hide if sticky is active
+    if (header.classList.contains('stickyHeader')) {
 
-//     header.classList.add('hideSticky');
+      header.classList.add('hideSticky');
 
-//     setTimeout(() => {
+      setTimeout(() => {
 
-//       if (header.classList.contains('hideSticky')) {
-//         header.classList.remove('stickyHeader');
-//       }
+        if (header.classList.contains('hideSticky')) {
 
-//     }, 350);
+          header.classList.remove('stickyHeader');
 
-//   }
+          if (!isHome) {
+            document.body.style.paddingTop = '';
+          }
 
-//   lastScroll = currentScroll <= 0
-//     ? 0
-//     : currentScroll;
+        }
 
-// });
+      }, 350);
+
+    }
+
+  }
+
+  lastScroll = currentScroll <= 0
+    ? 0
+    : currentScroll;
+
+});
+
+// Swiper for projects in mobile view only
+let newsSwiper;
+
+function initNewsSlider() {
+
+  if (window.innerWidth <= 991) {
+
+    if (!newsSwiper) {
+
+      newsSwiper = new Swiper(".newsSlider", {
+        slidesPerView: 1.8,
+        spaceBetween: 5,
+        navigation: {
+          nextEl: '.newsSwiperNav .swiper-button-next',
+          prevEl: '.newsSwiperNav .swiper-button-prev',
+        },
+        mousewheel: {
+          enabled: true,
+          releaseOnEdges: true, // allow page scroll when at first/last slide
+          sensitivity: 1,       // optional: adjust scroll sensitivity
+        },
+        breakpoints: {
+          0: {
+            slidesPerView: 1.2,
+          },
+          500: {
+            slidesPerView: 2.1,
+          },
+        },
+      });
+
+    }
+
+  } else {
+
+    if (newsSwiper) {
+      newsSwiper.destroy(true, true);
+      newsSwiper = undefined;
+    }
+
+  }
+
+}
+
+initNewsSlider();
+
+window.addEventListener('resize', initNewsSlider);

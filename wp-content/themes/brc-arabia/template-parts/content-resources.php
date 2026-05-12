@@ -18,6 +18,7 @@ get_header(); ?>
                 <h4 class="subTitle mb-0" data-aos="fade-up" data-aos-duration="1200">BRC Arabia</h4>
                 <h1 class="xlTitle" data-aos="fade-up" data-aos-duration="1500"><?php the_title(); ?></h1>
             </div>
+            
             <?php if (have_rows('_resources_types')) : ?>
                 <div class="resoTabArea">
                     <div class="resoList" data-aos="fade-up" data-aos-duration="1800">
@@ -28,6 +29,27 @@ get_header(); ?>
                                 <div class="resoItemHead">
                                     <h4 class="resoTitle mb-0"><?php the_sub_field('_resource_name'); ?></h4>
                                     <img src="<?php bloginfo('template_directory'); ?>/assets/media/arrow-right-theme.svg" alt="Arrow Right">
+                                </div>
+                                <div class="resoSubList position-relative1 d-lg-none1" data-aos="fade-up" data-aos-duration="1600">
+                                    <?php
+                                    if (have_rows('_resource_files')) : ?>
+                                        <div class="resoSubItem <?php echo ($reso_main === 1) ? 'active' : ''; ?>" data-tab="reso<?php echo $reso_main; ?>">
+                                            <?php $reso_sub = 1;
+                                            while (have_rows('_resource_files')) : the_row(); ?>
+                                                <div class="dwnldReso <?php echo ($reso_sub === 1) ? 'active' : ''; ?>">
+                                                    <h5 class="mb-0"><?php the_sub_field('_resource_file_name'); ?></h5>
+                                                    <?php if (get_sub_field('_upload_resource_file')) : ?>
+                                                        <div class="ctaBtn">
+                                                            <a href="<?php the_sub_field('_upload_resource_file'); ?>" target="_blank" class="color-theme">Download</a>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            <?php $reso_sub++;
+                                            endwhile;
+                                            wp_reset_postdata(); ?>
+                                        </div>
+                                    <?php
+                                    endif; ?>
                                 </div>
                             </div>
                         <?php
@@ -58,7 +80,7 @@ get_header(); ?>
                             </div>
                         </div> -->
                     </div>
-                    <div class="resoSubList position-relative" data-aos="fade-up" data-aos-duration="1600">
+                    <div class="resoSubList position-relative d-none d-lg-block1" data-aos="fade-up" data-aos-duration="1600">
                         <?php
                         $reso_type = 1;
                         while (have_rows('_resources_types')) : the_row();

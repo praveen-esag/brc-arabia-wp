@@ -68,7 +68,7 @@ get_header(); ?>
 
         <!-- Project content start -->
         <?php if (get_field('_project_detail_content') || get_field('_project_detail_image')): ?>
-            <section class="projectIntroSec">
+            <section class="projectIntroSec projDualColSec">
                 <div class="container-fluid">
                     <div class="row justify-content-between">
                         <div class="col-lg-5 col-12 projContCol">
