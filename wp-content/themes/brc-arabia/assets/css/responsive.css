@@ -30,7 +30,7 @@
 
     html,
     body {
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
         max-width: 100%;
     }
 
@@ -101,18 +101,18 @@
 
     .mainHeader,
     .mainHeader.absoluteHeader {
-        position: sticky;
+        /* position: sticky; */
         top: 0;
-        background-color: #fff;
+        /* background-color: #000; */
         z-index: 1000;
     }
 
-    .page-template-content-contact .mainHeader,
+    /* .page-template-content-contact .mainHeader,
     .page-template-content-contact .mainHeader.absoluteHeader {
         background-color: #0C56B7;
-    }
+    } */
 
-    .mainHeader .headerInner {
+    /* .mainHeader .headerInner {
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
@@ -120,18 +120,18 @@
         padding-top: 10px;
         padding-bottom: 10px;
         gap: 12px;
-    }
+    } */
 
     .mainHeader:not(.absoluteHeader) .headerInner {
         padding-bottom: 25px;
     }
 
     .navWrap.navLeft {
-        display: none !important;
+        /* display: none !important; */
     }
 
     /* Kill desktop 45% nav column — logo left, compact bar + toggle right */
-    #headerMain .navWrap.navRight {
+    /* #headerMain .navWrap.navRight {
         width: auto;
         max-width: none;
         flex: 0 0 auto;
@@ -139,16 +139,16 @@
         align-items: center;
         justify-content: center !important;
         margin-left: auto;
-    }
+    } */
 
     #headerMain .navWrap.navRight .mainNav {
-        display: flex;
+        /* display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: flex-end;
         gap: 0;
-        flex: 0 0 auto;
-        padding: revert-layer;
+        flex: 0 0 auto;*/
+        /* padding: revert-layer; */
         /* width: 100%; */
         /* height: 100vh; */
     }
@@ -178,14 +178,18 @@
     }
 
     .mainHeader .mainNav ul,
-    #headerMain .navWrap.navRight .mainNav ul {
-        display: none;
+    #headerMain .navWrap.navRight .mainNav ul,
+    .headerInner {
+        /* display: none; */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px !important;
     }
 
     .toggleIcon {
         display: flex;
         flex-shrink: 0;
-        position: relative;
+        /* position: relative; */
         z-index: 10002;
         width: 32px;
         min-width: 32px;
@@ -194,6 +198,7 @@
         justify-content: center;
         flex-direction: column;
         gap: 5px;
+        margin-top: 5px;
     }
 
     .toggleIcon span {
@@ -204,15 +209,17 @@
 
     /* Sticky header is white → absoluteHeader’s white bars were invisible */
     #headerMain .toggleIcon span,
-    #headerMain.mainHeader.absoluteHeader .toggleIcon span {
+    #headerMain.mainHeader.stickyHeader .toggleIcon span,
+    #headerMain.mainHeader.menu-open .toggleIcon span {
         background-color: #0C56B7;
     }
 
-    .page-template-content-contact #headerMain .toggleIcon span {
+    .page-template-content-contact #headerMain .toggleIcon span,
+    #headerMain.absoluteHeader .toggleIcon span {
         background-color: #fff;
     }
 
-    #headerMain.menu-open {
+    /* #headerMain.menu-open {
         position: fixed;
         top: 0;
         left: 0;
@@ -282,7 +289,7 @@
 
     #headerMain.menu-open .navWrap.navRight .mainNav ul li a:hover {
         color: #0C56B7;
-    }
+    } */
 
 }
 
@@ -1159,7 +1166,7 @@
         flex: 0 0 100%;
         width: 100%;
     }
-    
+
     .contFormArea .formCol .wpcf7-response-output {
         margin-top: 10px !important;
     }
@@ -1770,7 +1777,7 @@
     }
 
     .page-template-content-contact .logo img {
-        max-width: 110px;
+        max-width: 92px;
     }
 
     .dualcontImg.col-lg-7.col-12 {

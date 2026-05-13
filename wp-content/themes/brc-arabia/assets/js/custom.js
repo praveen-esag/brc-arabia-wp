@@ -1,5 +1,15 @@
 // Custom Scripts
+var baseUrl = '';
 
+if (window.location.hostname == 'localhost') {
+    baseUrl = 'http://localhost/brc-arabia/';
+} 
+else if (window.location.pathname.indexOf('/brc-arabia') !== -1) {
+    baseUrl = 'https://esagdemo.com/brc-arabia/';
+} 
+else {
+    baseUrl = 'https://esagdemo.com/brc-arabia/';
+}
 jQuery(document).ready(function ($) {
 
   //FAQ toggle function
@@ -68,16 +78,22 @@ jQuery(document).ready(function ($) {
   });
 
   // Megamenu toggle function
-  $('.megaToggleIcon').on('click', function () {
-    $(this).toggleClass('megaActive');
-    $('#headerMain').toggleClass('megaOpen');
-  });
+  if ($(window).width() > 991) {
+    $('.megaToggleIcon').on('click', function () {
+      $(this).toggleClass('megaActive');
+      $('#headerMain').toggleClass('megaOpen');
+    });
+  }
 
   // Footer nav toggle
-  if (window.innerWidth <= 768) {
+  if (window.innerWidth <= 991) {
     $('.navLabel').on('click', function () {
       $(this).next('.navList').slideToggle(300);
       $(this).toggleClass('show');
+    });
+    $('.allProdMenu').on('click', function () {
+      var serverUrl = window.location.origin;
+      window.location.href = baseUrl + "/products";
     });
   }
 

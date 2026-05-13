@@ -322,6 +322,13 @@ add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $a
 
 			$item_output .= $preview;
 		}
+	} elseif (in_array('menu-item-has-children', $item->classes)) {
+		$preview = '
+            <div class="menu-preview allProdPrev">
+                <a href="' . home_url() . '/products"><img src="' . get_template_directory_uri() . '/assets/media/all-product-menu-brc.png" alt=""></a>
+            </div>';
+
+		$item_output .= $preview;
 	}
 
 	return $item_output;

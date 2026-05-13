@@ -49,7 +49,7 @@
 							</div> -->
 						</nav>
 					</div>
-					<div class="logo_area logo">
+					<div class="logo_area logo d-lg-block d-none">
 						<a href="<?php echo home_url(); ?>">
 							<?php //the_custom_logo(); 
 							?>
@@ -74,12 +74,29 @@
 								<span></span>
 								<span></span>
 							</div>
-							<div class="toggleIcon d-lg-none">
-								<span></span>
-								<span></span>
-								<span></span>
-							</div>
 						</nav>
+					</div>
+				</div>
+				<div class="mobHead d-lg-none">
+					<div class="logo_area logo">
+						<a href="<?php echo home_url(); ?>">
+							<?php //the_custom_logo(); 
+							?>
+							<?php if (is_front_page()) { ?>
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo.svg" alt="BRC Logo" class="logoLight">
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo" class="logoDark">
+							<?php } elseif (is_page_template('template-parts/content-contact.php') || is_404()) { ?>
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_white.svg" alt="BRC Logo" class="logoLight">
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo" class="logoDark">
+							<?PHP } else { ?>
+								<img src="<?php bloginfo('template_directory'); ?>/assets/media/brc_logo_dark.svg" alt="BRC Logo" class="">
+							<?PHP } ?>
+						</a>
+					</div>
+					<div class="toggleIcon d-lg-none">
+						<span></span>
+						<span></span>
+						<span></span>
 					</div>
 				</div>
 			</div>
